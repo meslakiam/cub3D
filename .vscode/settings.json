@@ -1,0 +1,11 @@
+{
+    "files.associations": {
+        "cub3d.h": "c",
+        "helper.h": "c",
+        "mlx.h": "c",
+        "unistd.h": "c",
+        "garbage_collector.h": "c",
+        "stdio.h": "c",
+        "stdlib.h": "c"
+    }
+}
