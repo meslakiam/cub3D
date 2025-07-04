@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:31:27 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/01 19:27:03 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/07/04 19:12:38 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "garbage_collector/garbage_collector.h"
 # include "helper_functions/helper.h"
+# include "player_movement/player_movement.h"
 # include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
@@ -31,7 +32,7 @@
 # define key_left 97
 # define key_rotate_right 65363
 # define key_rotate_left 65361
-
+# define SPEED 2
 
 typedef struct s_player
 {
@@ -39,10 +40,11 @@ typedef struct s_player
 	int		turn_direction;
 	int		walk_direction;
 	int		rotation_angle;
+	char	direction;
 	int		p_x;
 	int		p_y;
-	// int		p_col;
-	// int		p_raw;
+	int		p_col;
+	int		p_row;
 }			t_player;
 
 typedef struct s_map
@@ -67,7 +69,9 @@ typedef struct s_data
 
 t_map		*v_map(void);
 t_data		*v_data(void);
-t_player   *v_player(void);
-
+t_player	*v_player(void);
+void		draw_player_triangle(int player_x, int player_y);
+void		draw_map(void);
+int			move_player(int key_code);
 
 #endif

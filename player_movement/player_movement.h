@@ -1,20 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   player_movement.h                                  :+:      :+:    :+:   */
+/*   player_movement.h                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 15:32:07 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/01 15:49:19 by imeslaki         ###   ########.fr       */
+/*   Created: 2025/07/04 16:29:17 by imeslaki          #+#    #+#             */
+/*   Updated: 2025/07/04 16:53:17 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-#define CUB3D_H
+#ifndef PLAYER_MOVEMENT_H
+# define PLAYER_MOVEMENT_H
 
-#include "../cub3d.h"
+# include "../cub3d.h"
 
-
+int     calcul_player_x(void);
+int     calcul_player_y(void);
+int     player_moves_by_pixels(int *param);
+int     player_in_position(void);
+int     move_player(int key_code);
 
 #endif

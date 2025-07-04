@@ -14,7 +14,7 @@ void put_pixel(int x, int y, int color)
 	if (x < 0 || y < 0)
 		return;
 
-	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));
+	dst = data->addr + (y * data->line_length + x * (data->bits_per_pixel / 8));  // 2 5
 	*(unsigned int *)dst = color;
 }
 
@@ -96,10 +96,10 @@ void draw_point(int start_x, int start_y, int color)
 //     }
 // }
 
-void draw_player_triangle(void)
+void draw_player_triangle(int player_x,int player_y )
 {
-    int cx = v_player()->p_x * PIXEL + PIXEL / 2;
-    int cy = v_player()->p_y * PIXEL + PIXEL / 2;
+    int cx = player_x + PIXEL;
+    int cy = player_y + PIXEL;
     int height = PIXEL / 5;   // shorter triangle height
     int half_width = 4;       // narrow fixed width
 
@@ -144,8 +144,10 @@ void draw_map(void)
                 if( !first && map[row][col] == 'P')
                 {
                     first = 1;
-                    v_player()->p_y = row;
-                    v_player()->p_x = col;
+                    v_player()->p_row = row;
+                    v_player()->p_x = row * PIXEL;
+                    v_player()->p_col = col;
+                    v_player()->p_y = col * PIXEL;
                 }
             }
             col++;
@@ -188,6 +190,8 @@ void fill_map(void)
 	map->map[i] = NULL;
 }
 
+
+
 void fill_data(void)
 {
 	t_data *data;
@@ -203,54 +207,10 @@ void fill_data(void)
 	data->img = mlx_new_image(data->mlx, win_width, win_height);
 	data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
 }
-int move_player(int key_code)
-{
-    t_player    *player;
-    t_data *data = v_data();
-    int         new_x;
-    int         new_y;
 
-    player = v_player();
-    new_x = player->p_x;
-    new_y = player->p_y;
-    if(key_code == key_up)
-    {
-        new_y--;
-    }
-    else if(key_code == key_down)
-    {
-        new_y++;
-    }
-    else if(key_code == key_right)
-    {
-        new_x++;
-    }
-    else if(key_code == key_left)
-    {
-        new_x--;
-    }
-    // else if(key_code == key_rotate_right)
-    // {
-// 
-    // }
-    // else if(key_code == key_rotate_left)
-    // {
-// 
-    // }
-    if(v_map()->map[new_y][new_x] != '1')
-    {
-        v_player()->p_x = new_x;
-        v_player()->p_y = new_y;
-        // printf("px = %d py = %d\n", v_player()->p_x, v_player()->p_y);
-    }
-    data->img = mlx_new_image(data->mlx, v_map()->raw * PIXEL, v_map()->col * PIXEL);
-    data->addr = mlx_get_data_addr(data->img, &data->bits_per_pixel, &data->line_length, &data->endian);
-    draw_map();
-    draw_player_triangle();
-	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img, 0, 0);
-    printf("x = %d y = %d\n", v_player()->p_x, v_player()->p_y);
-    return 1;
-}
+
+
+
 
 int main(void)
 {
@@ -260,9 +220,10 @@ int main(void)
 	fill_map();
 	fill_data();
 	draw_map();
-    draw_player_triangle();
+    draw_player_triangle(calcul_player_x(), calcul_player_y());
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img, 0, 0);
     mlx_hook(data->mlx_win, 2, 1L << 0, move_player, NULL);
+    // mlx_loop_hook(data->mlx,player_moves_by_pixels, NULL);
 	mlx_loop(data->mlx);
 
 	return 0;

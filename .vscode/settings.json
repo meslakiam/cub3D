@@ -6,6 +6,8 @@
         "unistd.h": "c",
         "garbage_collector.h": "c",
         "stdio.h": "c",
-        "stdlib.h": "c"
+        "stdlib.h": "c",
+        "player_movement.h": "c",
+        "player_movment.h": "c"
     }
 }
