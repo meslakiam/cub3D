@@ -7,19 +7,17 @@ CC = cc
 MLX_FLAGS = -lmlx -lX11 -lXext -lm -lz
 
 
-MAIN =  global.c main_test.c # main.c
+MAIN =  raycasting/global.c raycasting/drawing_functions.c raycasting/test.c #main.c #main_test.c
 
 GARBAGE_COLLECTOR = garbage_collector/ft_calloc.c garbage_collector/ft_exit.c garbage_collector/ft_free.c \
 	garbage_collector/ft_save_mem.c garbage_collector/mem_list.c
 
-HELPER_FUNCTIONS = helper_functions/delete_char_from_str.c helper_functions/delete_str_from_str.c helper_functions/delete_str_len.c \
-	helper_functions/ft_atoi.c helper_functions/ft_is_digit.c helper_functions/ft_itoa.c helper_functions/ft_putstr_fd.c \
+HELPER_FUNCTIONS = helper_functions/ft_atoi.c helper_functions/ft_is_digit.c helper_functions/ft_itoa.c helper_functions/ft_putstr_fd.c \
 	helper_functions/ft_split.c helper_functions/ft_str_join.c helper_functions/ft_strchr.c helper_functions/ft_strdup.c \
-	helper_functions/ft_strlen.c helper_functions/ft_substr.c helper_functions/insert_char_in_str.c helper_functions/insert_str_in_str.c \
-	helper_functions/is_alpha.c helper_functions/is_digit.c helper_functions/join_str_char.c helper_functions/separate_with_one_space.c \
-	helper_functions/strcmp.c helper_functions/strlen_2d_array.c helper_functions/strncmp.c helper_functions/strnstr_index.c
+	helper_functions/ft_strlen.c helper_functions/ft_substr.c helper_functions/is_alpha.c helper_functions/is_digit.c \
+	helper_functions/join_str_char.c
 
-PLAYER_MOVEMENT = player_movement/player_movement.c
+PLAYER_MOVEMENT = raycasting/player_movement/player_movement.c
 
 SRC = $(MAIN) $(GARBAGE_COLLECTOR) $(HELPER_FUNCTIONS) $(PLAYER_MOVEMENT)
 
