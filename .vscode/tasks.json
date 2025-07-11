@@ -7,8 +7,9 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "${workspaceFolder}/*.c",
+                // "${workspaceFolder}/*.c",
                 "${workspaceFolder}/*/*.c",
+                "${workspaceFolder}/*/*/*.c",
                 "-L/usr/local/lib",
                 "-I${workspaceFolder}/*",
                 "-lmlx",
