@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:35:48 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/17 09:27:19 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/07/19 22:19:14 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,8 +17,8 @@ void    draw_pixel(int y, int x, int color)
     t_data  *data;
     char *tmp;
 
-    data = v_data();
-    if (x < 0 || y < 0 || x >= data->win_width || y >= data->win_height)
+    data = v_global()->win_img;
+    if (x < 0 || y < 0 || x >= get_map_info()->win_w * TILESIZE || y >= get_map_info()->win_h * TILESIZE)
         return;
     tmp = data->addr + ((y * data->line_length) + (x * (data->bits_per_pixel / 8)));
     *(unsigned int *)tmp = color;

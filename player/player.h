@@ -6,20 +6,18 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:56:40 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/18 16:33:08 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/07/19 19:30:40 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PLAYER_H
 # define PLAYER_H
 
-# include "../cub3d.h"
+# include "../cube3d.h"
 # include "../defines.h"
 
 typedef struct s_player
 {
-	// char	**map;
-	// int		dir;
 	char	direction;
 	double	rotation_radian_angle;
 	double	rotation_angle;

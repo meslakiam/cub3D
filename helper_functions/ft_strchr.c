@@ -3,28 +3,30 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ijoubair <ijoubair@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/11 18:26:22 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/05/28 17:08:42 by ijoubair         ###   ########.fr       */
+/*   Created: 2025/07/16 04:04:24 by oel-bann          #+#    #+#             */
+/*   Updated: 2025/07/20 15:53:36 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "helper.h"
 
-char	*ft_strchr(char *str, int c)
+char	*ft_strchr(const char *s, int c)
 {
 	int	i;
+	int	lents;
 
 	i = 0;
-	if(!str)
-		return(NULL);	
-	while (str[i])
+	if (!s)
+		return (NULL);
+	lents = (int)ft_strlen(s);
+	if ((char)c == '\0')
+		return ((char *)&s[lents]);
+	while (s[i])
 	{
-		if (str[i] == (char)c)
-		{
-			return ((char *)&str[i]);
-		}
+		if (s[i] == (char)c)
+			return ((char *)&s[i]);
 		i++;
 	}
 	return (NULL);

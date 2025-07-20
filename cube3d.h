@@ -1,71 +1,59 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
+/*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/01 15:31:27 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/16 16:34:45 by imeslaki         ###   ########.fr       */
+/*   Created: 2025/07/16 03:24:07 by oel-bann          #+#    #+#             */
+/*   Updated: 2025/07/19 20:00:16 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CUB3D_H
-# define CUB3D_H
+#ifndef CUBE3D_H
+#define CUBE3D_H
 
-# include <math.h>
-# include <mlx.h>
 # include <stdio.h>
 # include <stdlib.h>
+# include <stdint.h>
 # include <unistd.h>
+# include <fcntl.h>
+# include <math.h>
+# include <mlx.h>
 # include <sys/time.h>
-# include <stdbool.h> 
-# include "garbage_collector/garbage_collector.h"
-# include "helper_functions/helper.h"
-// # include "player/player.h"
+# include <sys/types.h>
+# include "get/get_next_line.h"
+#include "../helper_functions/helper.h"
+# include "parsing/parsing.h"
 # include "map/map.h"
 # include "defines.h"
-// # include "ray_casting/ray_casting.h"
 
 
 
-typedef struct s_data
+typedef struct s_global
 {
 	void	*mlx;
 	void	*mlx_win;
-	void	*img;
-	char	*addr;
-	int		bits_per_pixel;
-	int		line_length;
-	int		endian;
 	int		win_width;
 	int		win_height;
-}			t_data;
+	t_data	*win_img;
+}			t_global;
 
 
+int		my_mlx_get_pixel_color(t_data *data, int x, int y);
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color);
+t_data	*get_pos_img(char dir, int rotation);
+t_data	* get_wall_img();
+t_data	* get_floor_img();
 
-//          global
-t_data		*v_data(void);
-int    move_the_player(void);
+
+t_global   *v_global(void);
+t_map_data *get_map_info(void);
+int         move_the_player(void);
 void        draw_circle(double y, double x, int radius, int color);
 void		draw_map(void);
 void		fill_data(void);
 
 
-
-
-
-
-
-
-
-
-
-
-// double  normalize_angle(double anlge);
-// int			move_player(int key_code);
-// void		draw_square(int y, int x, int color);
-// double		draw_line(int x0, int y0, int x1, int y1, int color);
-// void		draw_pixel(int y, int x, int color);
 
 #endif

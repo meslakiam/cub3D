@@ -1,71 +1,41 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_strjoin.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 03:57:16 by oel-bann          #+#    #+#             */
+/*   Created: 2024/10/26 21:23:47 by aazzaoui          #+#    #+#             */
 /*   Updated: 2025/07/19 18:32:01 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "helper.h"
 
-char	*ft_strldup(const char *s1, size_t len)
+char	*ft_strjoin(const char *s1, const char *s2)
 {
-	size_t	i;
-	char	*s;
+	char	*str;
 
-	i = 0;
-	if (!len)
+	int lenstr, (i), (y);
+	if (!s1 && !s2)
 		return (NULL);
-	s = (char *)ft_calloc(sizeof(char), (len + 1));
-	while (i < len)
-	{
-		s[i] = s1[i];
-		i++;
-	}
-	s[i] = '\0';
-	return (s);
-}
-
-char	*ft_strdup(const char *s1)
-{
-	int		i;
-	char	*s;
-	size_t	len;
-
 	if (!s1)
+		return (ft_strdup(s2));
+	if (!s2)
+		return (ft_strdup(s1));
+	lenstr = ft_strlen(s1) + ft_strlen(s2);
+	str = (char *)ft_calloc(1, lenstr + 1);
+	if (!str)
 		return (NULL);
 	i = 0;
-	len = ft_strlen(s1);
-	s = (char *)ft_calloc(sizeof(char), (len + 1));
 	while (s1[i])
 	{
-		s[i] = s1[i];
+		str[i] = s1[i];
 		i++;
 	}
-	s[i] = '\0';
-	return (s);
-}
-
-char	*ft_strdup_without_save_mem(const char *s1)
-{
-	int		i;
-	char	*s;
-	size_t	len;
-
-	if (!s1)
-		return (NULL);
-	i = 0;
-	len = ft_strlen(s1);
-	s = (char *)ft_calloc_without_save(sizeof(char), (len + 1));
-	while (s1[i])
-	{
-		s[i] = s1[i];
-		i++;
-	}
-	s[i] = '\0';
-	return (s);
+	y = 0;
+	while (s2[y])
+		str[i++] = s2[y++];
+	str[i] = '\0';
+	return (str);
 }

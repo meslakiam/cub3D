@@ -1,33 +1,39 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlen.c                                        :+:      :+:    :+:   */
+/*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 03:34:07 by oel-bann          #+#    #+#             */
+/*   Created: 2025/07/16 04:17:40 by oel-bann          #+#    #+#             */
 /*   Updated: 2025/07/19 18:32:01 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "helper.h"
 
-int	ft_strlen(const char *s)
+size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)
 {
-	int	i;
+	size_t	src_len;
+	size_t	dst_len;
+	size_t	i;
 
 	i = 0;
-	while (s && s[i])
+	src_len = ft_strlen(src);
+	if (!dst && dstsize == 0)
+		return (src_len);
+	dst_len = ft_strlen(dst);
+	if (dst_len == dstsize)
+		return (dst_len + src_len);
+	if (dst_len > dstsize)
+		return (dstsize + src_len);
+	if (dstsize == 0)
+		return (src_len);
+	while ((i + dst_len < dstsize - 1) && src[i])
+	{
+		dst[i + dst_len] = src[i];
 		i++;
-	return (i);
-}
-
-int	ft_strslen(char **strs)
-{
-	int	i;
-
-	i = 0;
-	while (strs && strs[i])
-		i++;
-	return (i);
+	}
+	dst[i + dst_len] = 0;
+	return (src_len + dst_len);
 }

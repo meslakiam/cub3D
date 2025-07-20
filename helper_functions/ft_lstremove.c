@@ -1,28 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_lstremove.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/21 17:42:13 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/05/21 17:42:27 by imeslaki         ###   ########.fr       */
+/*   Created: 2025/07/06 05:41:47 by oel-bann          #+#    #+#             */
+/*   Updated: 2025/07/19 18:32:01 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "helper.h"
 
-
-void	ft_putstr_fd(char *s, int fd)
+void ft_lstremove(t_map **map, t_map *node)
 {
-	int	i;
 
-	i = 0;
-	if (!s || fd < 0)
-		return ;
-	while (s[i])
-	{
-		write(fd, &s[i], 1);
-		i++;
-	}
+    if (!map || !*map || !node)
+        return;
+
+    if (node->prev)
+        node->prev->next = node->next;
+    else
+        *map = node->next;
+        
+    if (node->next)
+        node->next->prev = node->prev;
+        
+    node->next = NULL;
+    node->prev = NULL;
 }

@@ -6,13 +6,11 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:02:21 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/18 16:33:28 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/07/20 21:38:11 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "player.h"
-// #include "../cub3d.h"
-
 
 // void frames()
 // {
@@ -54,68 +52,89 @@ void    rotate_player(void)
         v_player()->rotation_angle += 360;
 }
 
-void    update_player_position(void)
+int check_wall(double x1, double y1, double angle, int d)
 {
-    double  radian;
-    double  side_radian;
+    int col;
+    int row;
+    double radian;
+
+    radian = DEG_TO_RAD(angle);
+    row = x1 + (d + 2) * cos(radian);
+    col = y1 + (d + 2) * sin(radian);
+    if (get_final_map(0,0)[col / TILESIZE][row / TILESIZE] == '1')
+        return 1;
+    return 0;
+}
+
+void update_player_position(double x1, double y1, double angle, int d)
+{
+    double radian;
     
-    if(v_player()->walk_direction != 0)
+    radian = DEG_TO_RAD(angle);
+    while (d <= PLAYER_SPEED)
     {
-        
-        radian = DEG_TO_RAD(v_player()->rotation_angle);
-        v_player()->save_x += cos(radian) * v_player()->walk_direction * PLAYER_SPEED;
-        v_player()->save_y += sin(radian) * v_player()->walk_direction * PLAYER_SPEED;
+        if (check_wall(x1, y1, angle, d) 
+            || check_wall(x1, y1+1, angle, d) 
+            || check_wall(x1, y1-1, angle, d) 
+            || check_wall(x1+1, y1, angle, d)
+            || check_wall(x1-1, y1, angle, d))
+            return;
+        v_player()->save_x = x1 + d * cos(radian);
+        v_player()->save_y = y1 + d * sin(radian);
+        d++;
     }
-    if(v_player()->side_direction != 0)
+}
+
+void    player_move_straight_walk(void)
+{
+    double  angle;
+
+    angle = v_player()->rotation_angle;
+    if (v_player()->walk_direction == -1)
     {
-        radian = DEG_TO_RAD(v_player()->rotation_angle);
-        side_radian = radian + DEG_TO_RAD(90);
-        v_player()->save_x += cos(side_radian) * v_player()->side_direction * PLAYER_SPEED;
-        v_player()->save_y += sin(side_radian) * v_player()->side_direction * PLAYER_SPEED;
+        angle += 180;
+        if (angle > 360)
+            angle -= 360;
+        update_player_position(v_player()->p_x, v_player()->p_y, angle, 1);
     }
+    else
+        update_player_position(v_player()->p_x, v_player()->p_y, angle, 1);
+}
+
+void    player_move_side_walk()
+{
+    double  angle;
+
+    angle = v_player()->rotation_angle + 90;
+    if (v_player()->side_direction == -1)
+    {
+        angle += 180;
+        if (angle > 360)
+            angle -= 360;
+        update_player_position(v_player()->p_x, v_player()->p_y, angle, 1);
+    }
+    else
+        update_player_position(v_player()->p_x, v_player()->p_y, angle, 1);
 }
 
 void    draw_FOV(void)
 {
-    double  radian1;
-    double  radian2;
     double  player_angle;
     double  half_fov;
     double ray_angle;
-    int     end_x;
-    int     end_y;
     int     num_of_rays;
-// 
-    // num_of_rays = v_data()->win_width / 4;
-    // player_angle = DEG_TO_RAD(v_player()->rotation_angle);
-    // half_fov = (DEG_TO_RAD(FOV) / 2);
-    // radian1 = normalize_angle2(player_angle + half_fov);
-    // radian2 = player_angle - half_fov;
-    // while ((int)radian1 != (int)player_angle)
-    // {
-    //     end_x = v_player()->p_x + cos(radian1) * 70;
-    //     end_y = v_player()->p_y + sin(radian1) * 70;
-    //     draw_line(v_player()->p_x, v_player()->p_y, end_x, end_y, 0x00FF0000);
-    //     radian1 -= 40;
-// 
-    // }
-    // end_x = v_player()->p_x + cos(radian2) * 70;
-    // end_y = v_player()->p_y + sin(radian2) * 70;
-    // draw_line(v_player()->p_x, v_player()->p_y, end_x, end_y, 0x00FF0000);
+
     int i = 0;
-    num_of_rays = v_data()->win_width / 4;
-    player_angle = DEG_TO_RAD(v_player()->rotation_angle);
-    half_fov = DEG_TO_RAD(FOV) / 2;
+
+    num_of_rays = v_global()->win_width * 2;
+    player_angle = v_player()->rotation_angle;
+    half_fov = FOV / 2;
     ray_angle = player_angle - half_fov;
-// 
     while (i < num_of_rays)
     {
-        // ray_angle = normalize_angle2(ray_angle);
-        // end_x = v_player()->p_x + cos(ray_angle) * 1000;
-        // end_y = v_player()->p_y + sin(ray_angle) * 1000;
-        // 
         cast_ray(ray_angle);
-        ray_angle += DEG_TO_RAD(FOV) / num_of_rays;  // step size in radians
+        draw_line(round(v_player()->p_x), round(v_player()->p_y), round(v_player()->end_p_x) , round(v_player()->end_p_y) , 0x00FF0000);
+        ray_angle += (double)FOV / (double)num_of_rays;  // step size in radians
         i++;
     }
 }
@@ -130,14 +149,12 @@ int    move_the_player(void)
     v_player()->save_y = v_player()->p_y;
     if(v_player()->turn_direction != 0)
         rotate_player();
-    if(v_player()->walk_direction != 0 || v_player()->side_direction != 0)
-        update_player_position();
-    new_x = v_player()->save_x;
-    new_y = v_player()->save_y;
-    if (v_map()->map[(int)(v_player()->p_y / TILESIZE)][(int)(new_x / TILESIZE)] != '1')
-        v_player()->p_x = new_x;
-    if (v_map()->map[(int)(new_y / TILESIZE)][(int)(v_player()->p_x / TILESIZE)] != '1')
-        v_player()->p_y = new_y;
+    if(v_player()->walk_direction != 0)
+        player_move_straight_walk();
+    if(v_player()->side_direction != 0)
+        player_move_side_walk();
+    v_player()->p_x = v_player()->save_x;
+    v_player()->p_y = v_player()->save_y;
     draw_map();
     draw_FOV();
     return 0;

@@ -1,6 +1,6 @@
 {
     "files.associations": {
-        "cub3d.h": "c",
+        "cube3d.h": "c",
         "helper.h": "c",
         "mlx.h": "c",
         "unistd.h": "c",
@@ -8,6 +8,9 @@
         "stdio.h": "c",
         "stdlib.h": "c",
         "player_movement.h": "c",
-        "player_movment.h": "c"
+        "player_movment.h": "c",
+        "fcntl.h": "c",
+        "parsing.h": "c",
+        "defines.h": "c"
     }
 }

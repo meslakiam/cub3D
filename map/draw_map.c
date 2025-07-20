@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:27:18 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/19 18:01:33 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/07/19 22:14:54 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,13 @@ bool	is_player(char c)
 
 void	draw_player(void)
 {
-    t_data  *data;
+    t_global  *data;
 
-    data = v_data();
+    data = v_global();
 	draw_circle(v_player()->p_y, v_player()->p_x, RADIUS, 0x00FF0000);
 	cast_ray(v_player()->rotation_angle);
 	draw_line((int)v_player()->p_x, (int)v_player()->p_y, (int)v_player()->end_p_x , (int)v_player()->end_p_y , 0x00FF0000);
-	mlx_put_image_to_window(data->mlx, data->mlx_win, data->img, 0, 0);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->win_img->img, 0, 0);
 }
 
 void	draw_map(void)
@@ -84,7 +84,7 @@ void	draw_map(void)
 
 	p = v_player();
 	col = 0;
-	map = v_map()->map;
+	map = get_final_map(0,0);
 	while (map[col])
 	{
 		row = 0;

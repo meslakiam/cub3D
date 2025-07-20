@@ -6,12 +6,12 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:57:51 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/18 16:32:49 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/07/20 16:57:39 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "player.h"
-// # include "../cub3d.h"
+// # include "../cube3d.h"
 
 double distance(double x2, double y2)
 {
@@ -56,17 +56,30 @@ void find_vertical_hit(double *hit_x, double *hit_y, double rad)
 
     while (1)
     {
-        int map_x;
+        int map_x, left_x, right_x;
         if (cos(rad) > 0)
+        {
             map_x = vert_x / TILESIZE;
+            left_x = (vert_x + 3) / TILESIZE;
+            right_x = (vert_x - 3) / TILESIZE;
+        }
         else
+        {
             map_x = (vert_x - 1) / TILESIZE;
-        
-        int map_y = vert_y / TILESIZE;
+            left_x = ((vert_x - 1) + 3) / TILESIZE;
+            right_x = ((vert_x - 1)) / TILESIZE;
+        }
+        int map_y, left_y, right_y; 
+        map_y = vert_y / TILESIZE;
+        left_y = (vert_y + 1) / TILESIZE;
+        right_y = (vert_y - 1) / TILESIZE;
 
         if (is_wall(map_x, map_y))
             break;
-
+        else if(is_wall(map_x, left_y))
+            break;
+        else if (is_wall(right_x, map_y))
+            break;
         vert_x += x_step_v;
         vert_y += y_step_v;
     }
@@ -108,15 +121,31 @@ void find_horizontal_hit(double *hit_x, double *hit_y, double rad)
 
     while (1)
     {
-        int map_x = hor_x / TILESIZE;
-        int map_y;
+        int map_x, left_x, right_x;
+        int map_y, left_y, right_y;
+        
+        map_x = hor_x / TILESIZE;
+        left_x = (hor_x + 1) / TILESIZE;
+        right_x = (hor_x - 1) / TILESIZE;
         if (sin(rad) > 0)
+        {
             map_y = hor_y / TILESIZE;
+            left_y = (hor_y + 1) / TILESIZE;
+            right_y = (hor_y - 1) / TILESIZE;
+        }
         else
+        {
             map_y = (hor_y - 1) / TILESIZE;
+            left_y = ((hor_y - 1)) / TILESIZE;
+            right_y = ((hor_y - 1)) / TILESIZE;
+        }
         if (is_wall(map_x, map_y))
             break;
-
+        else if (is_wall(map_x, right_y))
+            break;
+        else if (is_wall(left_x, map_y))
+            break;
+        
         hor_x += x_step_h;
         hor_y += y_step_h;
     }
@@ -136,8 +165,8 @@ void cast_ray(double angle)
     if (fabs(cos(radian)) == 0)
         radian += 0.000000001;
 
-    find_vertical_hit(&vx, &vy, angle);
-    find_horizontal_hit(&hx, &hy, angle);
+    find_vertical_hit(&vx, &vy, radian);
+    find_horizontal_hit(&hx, &hy, radian);
 
     double dist_vert = distance(vx, vy);
     double dist_hor = distance(hx, hy);

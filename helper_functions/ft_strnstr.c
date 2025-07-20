@@ -1,55 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_strnstr.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/05/22 16:58:57 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/05/31 16:21:45 by imeslaki         ###   ########.fr       */
+/*   Created: 2024/10/26 00:51:07 by oel-bann          #+#    #+#             */
+/*   Updated: 2025/07/19 18:32:01 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "helper.h"
 
-static int	ft_count(int n)
+char	*ft_strnstr(char *haystack, char *needle, int len)
 {
 	int	i;
+	int	j;
 
 	i = 0;
-	if (n <= 0)
-		i = 1;
-	while (n != 0)
+	if (needle[i] == '\0')
+		return ((char *)haystack);
+	while (haystack[i] && i < len)
 	{
-		n = n / 10;
+		j = 0;
+		if (haystack[i] == needle[j])
+		{
+			while (needle[j] && (j + i) < len && haystack[i + j] == needle[j])
+				j++;
+			if (j == ft_strlen(needle))
+				return ((char *)(haystack + i + j));
+		}
 		i++;
 	}
-	return (i);
-}
-
-char	*ft_itoa(int n)
-{
-	char	*str;
-	int		j;
-	long	nbr;
-
-	nbr = n;
-	j = ft_count(nbr);
-	str = ft_malloc(j + 1);
-	if (!str)
-		return (NULL);
-	if (nbr == 0)
-		str[0] = '0';
-	str[j] = '\0';
-	if (nbr < 0)
-	{
-		str[0] = '-';
-		nbr = nbr * -1;
-	}
-	while (nbr != 0)
-	{
-		str[--j] = (nbr % 10) + '0';
-		nbr = nbr / 10;
-	}
-	return (str);
+	return (NULL);
 }

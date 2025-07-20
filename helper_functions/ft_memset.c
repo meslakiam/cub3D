@@ -1,22 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_wall.c                                          :+:      :+:    :+:   */
+/*   ft_memset.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 16:02:02 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/19 20:03:10 by imeslaki         ###   ########.fr       */
+/*   Created: 2025/07/16 03:46:42 by oel-bann          #+#    #+#             */
+/*   Updated: 2025/07/19 18:32:01 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "player.h"
+#include "helper.h"
 
-int is_wall(int map_x, int map_y)
+void	*ft_memset(void *b, int c, size_t len)
 {
-    if (map_x < 0 || map_x >= v_global()->win_width / TILESIZE)
-        return (1);
-    if(map_y < 0 || map_y >= v_global()->win_height / TILESIZE)
-        return (1);
-    return (get_final_map(0,0)[map_y][map_x] == '1');
+	unsigned char	*tab;
+	size_t			i;
+
+	tab = (unsigned char *)b;
+	i = 0;
+	while (i < len)
+	{
+		tab[i] = (unsigned char)c;
+		i++;
+	}
+	return ((void *)tab);
 }
