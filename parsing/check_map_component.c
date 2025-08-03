@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_component.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 12:10:37 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/07/20 16:40:17 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/07/20 21:05:13 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,14 +40,14 @@ int check_component()
     return (1);
 }
 
-void get_player_pos()
+void get_player_pos(char **map_c)
 {
     int i, (j);
     char **map;
 
     i = 0;
     j = 0;
-    map = get_final_map(0, 0);
+    map = map_c;
     while(map[i])
     {
         j = 0;
@@ -76,46 +76,62 @@ char **flood_fill_map()
     y = 1;
 	new_map = ft_calloc(get_map_hight(1) + 3, sizeof(char *));
     new_map[0] = ft_calloc(ft_strlen(map[0]) + 3, sizeof(char));
-    ft_memset(new_map[0], ' ', ft_strlen(map[0]) + 2);
+    ft_memset(new_map[0], '*', ft_strlen(map[0]) + 2);
     new_map[get_map_hight(0) + 1] = ft_calloc(ft_strlen(map[get_map_hight(0) - 1]) + 3, sizeof(char));
-    ft_memset(new_map[get_map_hight(0) + 1], ' ', ft_strlen(map[get_map_hight(0) - 1]) + 2);
+    ft_memset(new_map[get_map_hight(0) + 1], '*', ft_strlen(map[get_map_hight(0) - 1]) + 2);
 	while (map[i])
 	{
 		new_map[y] = ft_calloc(ft_strlen(map[i]) + 3, sizeof(char));
 		j = 0;
         h = 0;
-        new_map[y][j] = ' ';
+        new_map[y][j] = '*';
         j++;
 		while(map[i][h])
 		{
-			if (ft_strchr("01NSEW", map[i][h]))
+			if (ft_strchr("01NSEW ", map[i][h]))
 				new_map[y][j] = map[i][h];
             else
-                new_map[y][j] = ' ';
+                new_map[y][j] = '*';
 			j++;
             h++;
 		}
-        new_map[y][j] = ' ';
+        new_map[y][j] = '*';
 		i++;
         y++;
 	}
 	return (new_map);
 }
 
-void	flood_fill(char **map, int x, int y)
+void flood_fill(char **map, int x, int y)
 {
     int len1 = ft_strlen(map[y]);
     int len2 = get_map_hight(0) + 2;
-	if (x < 0 || y < 0 || x >  len1 || y > len2)
+	if (x < 0 || y < 0 || x >=  len1 || y >= len2)
 		return ;
-	if (map[y][x] == '1')
-		return ;
-    else if ((map[y][x] == '0' &&  map[y][x - 1] == ' ') || (map[y][x] == '0' &&  map[y][x + 1] == ' '))
+    if (map[y][x] == '2')
         return;
-    else if ((map[y][x] == '0' &&  map[y - 1][x] == ' ') || (map[y][x] == '0' &&  map[y + 1][x] == ' '))
+    else if (map[y][x] == '*')
         return;
-	else
-		map[y][x] = '1';
+	else if (map[y][x] == '1')
+		map[y][x] = '2';
+    else if (ft_strchr("NEWS", map[y][x]) || map[y][x] == '0')
+		map[y][x] = '2';
+    else if (map[y][x] == '0' && (map[y][x - 1] == '*' || map[y][x + 1] == '*'))
+    {
+        
+    }
+    else if (map[y][x] == '0' &&  (map[y - 1][x] == '*' || map[y + 1][x] == '*'))
+    {
+        write(2, "Error\n ---> The Map Not Closed\n",31);
+        ft_exit(255);
+    }
+    else if (map[y][x] == ' ' && (map[y][x - 1] != '0' && map[y][x + 1] != '0' && map[y - 1][x] != '0' && map[y + 1][x] != '0'))
+        return;
+    else
+    {
+        write(2, "Error\n ---> The Map Not Closed\n",31);
+        ft_exit(255);
+    }
 	flood_fill(map, x + 1, y);
 	flood_fill(map, x - 1, y);
 	flood_fill(map, x, y + 1);
@@ -125,20 +141,23 @@ void	flood_fill(char **map, int x, int y)
 int check_closed_wall()
 {
     char **map;
-    int i;
+    char **map2;
 
-    i = 0;
-    get_player_pos();
     map = flood_fill_map();
-    flood_fill(map, get_map_info()->player_x, get_map_info()->player_y);
-    while(map[i])
+    int i = 0;
+    while (map[i])
     {
-        if (ft_strchr(map[i], '0'))
-        {
-            write(2, "Error\n ---> The Map Not Closed\n",31);
-            // ft_exit(255);
-        }
-        i++;
+       printf("|%s|\n",map[i]);
+       i++;
+    }
+    get_player_pos(map);
+    printf("player x = %d | player y= %d\n",get_map_info()->player_x, get_map_info()->player_y);
+    flood_fill(map, get_map_info()->player_x, get_map_info()->player_y);
+     i = 0;
+    while (map[i])
+    {
+       printf("|%s|\n",map[i]);
+       i++;
     }
     return(1);
 }

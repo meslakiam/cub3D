@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:27:18 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/19 22:14:54 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/07/25 00:31:24 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,13 +66,16 @@ bool	is_player(char c)
 
 void	draw_player(void)
 {
-    t_global  *data;
+//     t_global	*data;
+// 	t_data		*shrinked_map;
 
-    data = v_global();
+//     data = v_global();
 	draw_circle(v_player()->p_y, v_player()->p_x, RADIUS, 0x00FF0000);
-	cast_ray(v_player()->rotation_angle);
-	draw_line((int)v_player()->p_x, (int)v_player()->p_y, (int)v_player()->end_p_x , (int)v_player()->end_p_y , 0x00FF0000);
-	mlx_put_image_to_window(data->mlx, data->mlx_win, data->win_img->img, 0, 0);
+	// cast_ray(v_player()->rotation_angle);
+	// draw_line((int)v_player()->p_x, (int)v_player()->p_y, (int)v_player()->end_p_x , (int)v_player()->end_p_y , 0x00FF0000);
+	// shrinked_map = mlx_shrink_img(data->win_img, 440, 160);
+	// mlx_put_image_to_window(data->mlx, data->mlx_win, shrinked_map->img, 0, 0);
+	// mlx_put_image_to_window(data->mlx, data->mlx_win, data->win_img->img, 0, 0);
 }
 
 void	draw_map(void)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 03:25:53 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/07/19 19:43:20 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/07/31 06:50:08 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 # define HELPER_H
 
 # include "../garbage_collector/garbage_collector.h"
+# include "math.h"
 # include <fcntl.h>
 # include <stdint.h>
 # include <stdio.h>
+# include <mlx.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
@@ -27,6 +29,14 @@ typedef struct s_map
 	struct s_map		*prev;
 	struct s_map		*next;
 }						t_map;
+
+typedef struct s_rays_data
+{
+	int ray_distance;
+	int ray_angle;
+    double end_x_y;
+	struct s_rays_data *next;
+} t_rays_data;
 
 typedef struct t_img
 {
@@ -54,6 +64,16 @@ typedef struct s_data_list
 	struct s_data_list	*prev;
 }						t_data_list;
 
+typedef struct s_global
+{
+	void	*mlx;
+	void	*mlx_win;
+	int		win_width;
+	int		win_height;
+	t_data	*win_img;
+	t_data	*map_img;
+}			t_global;
+
 char					*ft_strchr(const char *s, int c);
 char					*ft_strdup(const char *s1);
 char					*ft_strldup(const char *s1, size_t len);
@@ -74,5 +94,13 @@ void					ft_lstadd_back_pos(t_data_list **lst, t_data_list *new);
 size_t					ft_strlcat(char *dst, const char *src, size_t dstsize);
 t_map					*ft_lstnew(void *content);
 t_img					*ft_lstnew_img(char *content, char dir);
+t_global  				*v_global(void);
+int						my_mlx_get_pixel_color(t_data *data, int x, int y);
+void					my_mlx_pixel_put(t_data *data, int x, int y, int color);
+t_data					*mlx_shrink_img(t_data *src, int width, int height);
+t_data					*mlx_expand_img(t_data *src, int width, int height);
+unsigned int			blend_colors(unsigned int bg, unsigned int fg, float alpha);
+void					ft_lstadd_back_rays(t_rays_data **lst, t_rays_data *new);
+t_rays_data             *ft_lstnew_ray(int r_dis, int ray_ang, double end_x_y);
 
 #endif

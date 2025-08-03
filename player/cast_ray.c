@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   cast_ray.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:57:51 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/20 16:57:39 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/07/30 01:19:05 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "player.h"
 // # include "../cube3d.h"
-
+double angle2;
 double distance(double x2, double y2)
 {
     double  dx;
@@ -60,26 +60,26 @@ void find_vertical_hit(double *hit_x, double *hit_y, double rad)
         if (cos(rad) > 0)
         {
             map_x = vert_x / TILESIZE;
-            left_x = (vert_x + 3) / TILESIZE;
-            right_x = (vert_x - 3) / TILESIZE;
+            // left_x = (vert_x + 0.1) / TILESIZE;
+            // right_x = (vert_x - 0.1) / TILESIZE;
         }
         else
         {
             map_x = (vert_x - 1) / TILESIZE;
-            left_x = ((vert_x - 1) + 3) / TILESIZE;
-            right_x = ((vert_x - 1)) / TILESIZE;
+            // left_x = (vert_x - 0.1) / TILESIZE;
+            // right_x = (vert_x - 0.1) / TILESIZE;
         }
         int map_y, left_y, right_y; 
         map_y = vert_y / TILESIZE;
-        left_y = (vert_y + 1) / TILESIZE;
-        right_y = (vert_y - 1) / TILESIZE;
+        // left_y = (vert_y + 0.1) / TILESIZE;
+        // right_y = (vert_y - 0.1) / TILESIZE;
 
         if (is_wall(map_x, map_y))
             break;
-        else if(is_wall(map_x, left_y))
-            break;
-        else if (is_wall(right_x, map_y))
-            break;
+        // else if(is_wall(map_x , left_y))
+        //     break;
+        // else if (is_wall(right_x, map_y))
+        //     break;
         vert_x += x_step_v;
         vert_y += y_step_v;
     }
@@ -123,28 +123,29 @@ void find_horizontal_hit(double *hit_x, double *hit_y, double rad)
     {
         int map_x, left_x, right_x;
         int map_y, left_y, right_y;
+    
         
         map_x = hor_x / TILESIZE;
-        left_x = (hor_x + 1) / TILESIZE;
-        right_x = (hor_x - 1) / TILESIZE;
+        // left_x = (hor_x + 0.1) / TILESIZE;
+        // right_x = (hor_x - 0.1) / TILESIZE;
         if (sin(rad) > 0)
         {
             map_y = hor_y / TILESIZE;
-            left_y = (hor_y + 1) / TILESIZE;
-            right_y = (hor_y - 1) / TILESIZE;
+            // left_y = (hor_y + 0.1) / TILESIZE;
+            // right_y = (hor_y - 0.1) / TILESIZE;
         }
         else
         {
             map_y = (hor_y - 1) / TILESIZE;
-            left_y = ((hor_y - 1)) / TILESIZE;
-            right_y = ((hor_y - 1)) / TILESIZE;
+            // left_y = (hor_y - 0.1) / TILESIZE;
+            // right_y = (hor_y - 0.1) / TILESIZE;
         }
         if (is_wall(map_x, map_y))
             break;
-        else if (is_wall(map_x, right_y))
-            break;
-        else if (is_wall(left_x, map_y))
-            break;
+        // else if (is_wall(map_x, right_y))
+        //     break;
+        // else if (is_wall(left_x, map_y))
+        //     break;
         
         hor_x += x_step_h;
         hor_y += y_step_h;
@@ -154,12 +155,14 @@ void find_horizontal_hit(double *hit_x, double *hit_y, double rad)
 }
 
 
+
 void cast_ray(double angle)
 {
     double vx, vy;
     double hx, hy;
     double radian;
 
+    angle2 = angle;
     radian = angle * (M_PI / 180.0);
 
     if (fabs(cos(radian)) == 0)
@@ -171,6 +174,7 @@ void cast_ray(double angle)
     double dist_vert = distance(vx, vy);
     double dist_hor = distance(hx, hy);
 
+    v_player()->was_hit_vertical = (dist_vert < dist_hor);
     if (dist_vert < dist_hor)
     {
         v_player()->end_p_x = vx;

@@ -1,22 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_wall.c                                          :+:      :+:    :+:   */
+/*   ft_lstnew _ray.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 16:02:02 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/24 23:04:25 by oel-bann         ###   ########.fr       */
+/*   Created: 2025/07/16 03:51:47 by oel-bann          #+#    #+#             */
+/*   Updated: 2025/07/31 06:49:57 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "player.h"
+#include "helper.h"
 
-int is_wall(int map_x, int map_y)
+t_rays_data	*ft_lstnew_ray(int r_dis, int ray_ang, double end_x_y)
 {
-    if (map_x < 0 || map_x >= get_map_info()->win_w)
-        return (1);
-    if(map_y < 0 || map_y >= get_map_info()->win_h)
-        return (1);
-    return (get_final_map(0,0)[map_y][map_x] == '1');
+	t_rays_data	*node;
+
+	node = (t_rays_data *)ft_calloc(1, sizeof(t_rays_data));
+	if (!node)
+		return (NULL);
+	node->ray_distance = r_dis;
+	node->ray_angle = ray_ang;
+    node->end_x_y = end_x_y;
+	node->next = NULL;
+	return (node);
 }

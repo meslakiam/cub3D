@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:35:48 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/19 22:19:14 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/07/27 00:07:26 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,31 @@ void    draw_pixel(int y, int x, int color)
     t_data  *data;
     char *tmp;
 
-    data = v_global()->win_img;
+    data = v_global()->map_img;
     if (x < 0 || y < 0 || x >= get_map_info()->win_w * TILESIZE || y >= get_map_info()->win_h * TILESIZE)
         return;
     tmp = data->addr + ((y * data->line_length) + (x * (data->bits_per_pixel / 8)));
+    *(unsigned int *)tmp = color;
+}
+
+void    draw_ray_pixel(int y, int x, int color)
+{
+    t_data  *data;
+    char *tmp;
+    char *ch;
+    double dis;
+    double opacity;
+
+    dis = distance(x, y);
+    if (dis < 10)
+        opacity = 1;
+    else
+        opacity = 10 / dis;
+    data = v_global()->map_img;
+    if (x < 0 || y < 0 || x >= get_map_info()->win_w * TILESIZE || y >= get_map_info()->win_h * TILESIZE)
+        return;
+    tmp = data->addr + ((y * data->line_length) + (x * (data->bits_per_pixel / 8)));
+    color = blend_colors(*(unsigned int *)tmp, color, opacity);
     *(unsigned int *)tmp = color;
 }
 
@@ -121,7 +142,7 @@ double draw_line(int x0, int y0, int x1, int y1, int color)
 
     while (1)
     {
-        draw_pixel(y0, x0, color);
+        draw_ray_pixel(y0, x0, color);
         if (x0 == x1 && y0 == y1)
             break;
         e2 = 2 * err;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 06:50:09 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/07/19 20:58:12 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/07/16 12:05:39 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,12 +27,5 @@ void check_map(char *filename)
         ft_exit(255);
     }
     get_map_width();
-    int i = 0;
-        while (flood_fill_map()[i])
-        {
-            printf("|%s|\n", flood_fill_map()[i]);
-            i++;
-        }
-        
     check_closed_wall();
 }

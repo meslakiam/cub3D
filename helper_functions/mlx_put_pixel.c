@@ -1,22 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_wall.c                                          :+:      :+:    :+:   */
+/*   mlx_put_pixel.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 16:02:02 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/24 23:04:25 by oel-bann         ###   ########.fr       */
+/*   Created: 2025/07/24 23:35:01 by oel-bann          #+#    #+#             */
+/*   Updated: 2025/07/26 23:52:42 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "player.h"
+#include "helper.h"
 
-int is_wall(int map_x, int map_y)
+void	my_mlx_pixel_put(t_data *data, int x, int y, int color)
 {
-    if (map_x < 0 || map_x >= get_map_info()->win_w)
-        return (1);
-    if(map_y < 0 || map_y >= get_map_info()->win_h)
-        return (1);
-    return (get_final_map(0,0)[map_y][map_x] == '1');
+	char	*dst;
+	
+	dst = data->addr + (y * data->line_length) + (x * (data->bits_per_pixel / 8));
+    *(unsigned int*)dst = color;
 }

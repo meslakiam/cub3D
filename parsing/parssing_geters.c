@@ -3,16 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   parssing_geters.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 06:07:03 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/07/19 19:22:55 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/07/24 19:12:45 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-
-
 
 t_map **get_map()
 {

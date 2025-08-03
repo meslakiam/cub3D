@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:02:21 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/20 21:38:11 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/07/27 19:25:14 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,10 +123,13 @@ void    draw_FOV(void)
     double  half_fov;
     double ray_angle;
     int     num_of_rays;
+    t_global	*data;
+	t_data		*shrinked_map;
+    data = v_global();
 
     int i = 0;
 
-    num_of_rays = v_global()->win_width * 2;
+    num_of_rays = v_global()->win_width;
     player_angle = v_player()->rotation_angle;
     half_fov = FOV / 2;
     ray_angle = player_angle - half_fov;
@@ -134,9 +137,13 @@ void    draw_FOV(void)
     {
         cast_ray(ray_angle);
         draw_line(round(v_player()->p_x), round(v_player()->p_y), round(v_player()->end_p_x) , round(v_player()->end_p_y) , 0x00FF0000);
-        ray_angle += (double)FOV / (double)num_of_rays;  // step size in radians
+        render(i, ray_angle);
+        ray_angle += (double)FOV / (double)num_of_rays;
         i++;
     }
+    shrinked_map = mlx_shrink_img(data->map_img, v_global()->map_img->img_width / 2, v_global()->map_img->img_height / 2);
+	mlx_put_image_to_window(data->mlx, data->mlx_win, data->win_img->img, 0, 0);
+    mlx_put_image_to_window(data->mlx, data->mlx_win, shrinked_map->img, 0, 0);
 }
 
 int    move_the_player(void)
@@ -145,6 +152,7 @@ int    move_the_player(void)
     double  new_y;
 
     // frames();
+    render_floor_and_sky();
     v_player()->save_x = v_player()->p_x;
     v_player()->save_y = v_player()->p_y;
     if(v_player()->turn_direction != 0)

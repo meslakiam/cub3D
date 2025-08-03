@@ -1,22 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   is_wall.c                                          :+:      :+:    :+:   */
+/*   ft_lstadd_back_rays.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/16 16:02:02 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/24 23:04:25 by oel-bann         ###   ########.fr       */
+/*   Created: 2025/07/16 03:50:32 by oel-bann          #+#    #+#             */
+/*   Updated: 2025/07/31 06:47:56 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "player.h"
+#include "helper.h"
 
-int is_wall(int map_x, int map_y)
+void	ft_lstadd_back_rays(t_rays_data **lst, t_rays_data *new)
 {
-    if (map_x < 0 || map_x >= get_map_info()->win_w)
-        return (1);
-    if(map_y < 0 || map_y >= get_map_info()->win_h)
-        return (1);
-    return (get_final_map(0,0)[map_y][map_x] == '1');
+	t_rays_data	*temp;
+
+	if (!lst)
+		return ;
+	if (*lst == NULL)
+		*lst = new;
+	else
+	{
+		temp = *lst;
+		while (temp->next != NULL)
+			temp = temp->next;
+		temp->next = new;
+	}
 }
