@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:27:18 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/25 00:31:24 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/05 16:24:47 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	get_player_direction(void)
 		v_player()->rotation_angle = 180;
 }
 
-void	init_player(int col, int row, int angle)
+void	init_player(int col, int row)
 {
 	static int	first;
 
@@ -97,7 +97,8 @@ void	draw_map(void)
 				draw_square(col * TILESIZE, row * TILESIZE, 0x00404040); // Wall
 			else if (map[col][row] == '0' || is_player(map[col][row]))
 			{
-				init_player(col, row, 45);
+				if(is_player(map[col][row]))
+					init_player(col, row);
 				draw_square(col * TILESIZE, row * TILESIZE, 0x00F5F5DC); // Floor
 			}
 			row++;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:56:40 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/28 03:45:59 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/05 16:50:35 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,11 @@ typedef struct s_player
 	int		was_hit_vertical;
 	int		p_col;
 	int		p_row;
+	double	x_step_v;
+	double	y_step_v;
+	double	x_step_h;
+	double	y_step_h;
+	
 }			t_player;
 
 // typedef struct s_data t_data;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:50:28 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/03 02:37:04 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:52:47 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,6 @@ void render_floor_and_sky()
         }
         y++;
     }
-    
 }
 
 void    draw_pixel_depend_distance(int y, int x, int color)
@@ -77,7 +76,7 @@ int get_wall_texture()
 
 int get_wall_strip_hight(int r_angle)
 {
-     int wall_strip_hight;
+    int wall_strip_hight;
     double correct_dis;
     double radian;
 

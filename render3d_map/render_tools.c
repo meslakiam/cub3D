@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   render_tools.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 19:24:09 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/03 02:31:12 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/06 17:21:34 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,15 @@ double get_img_start_w(int img_w)
     double end_x_y;
     int pos;
 
-    pos = v_player()->end_p_x / TILESIZE;
+    
     if (v_player()->was_hit_vertical)
         end_x_y = v_player()->end_p_y;
     else
         end_x_y = v_player()->end_p_x;
+    pos = end_x_y / TILESIZE;
     img_start_w = (end_x_y - (pos * TILESIZE)) * (img_w / TILESIZE);
+    if(img_start_w < 0)
+        img_start_w = 0;
     return (img_start_w);
 }
 

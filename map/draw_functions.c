@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:35:48 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/27 00:07:26 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:57:03 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ void    draw_ray_pixel(int y, int x, int color)
     if (x < 0 || y < 0 || x >= get_map_info()->win_w * TILESIZE || y >= get_map_info()->win_h * TILESIZE)
         return;
     tmp = data->addr + ((y * data->line_length) + (x * (data->bits_per_pixel / 8)));
-    color = blend_colors(*(unsigned int *)tmp, color, opacity);
+    // color = blend_colors(*(unsigned int *)tmp, color, opacity);
     *(unsigned int *)tmp = color;
 }
 

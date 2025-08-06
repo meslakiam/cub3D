@@ -6,7 +6,6 @@ CC = cc
 
 MLX_FLAGS = -lmlx -lX11 -lXext -lm -lz
 
-
 MAIN =  global.c draw_map.c 
 
 GARBAGE_COLLECTOR = garbage_collector/ft_calloc.c garbage_collector/ft_exit.c garbage_collector/ft_free.c \

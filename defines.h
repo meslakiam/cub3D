@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:31:03 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/27 01:48:26 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/06 13:14:23 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 #  define M_PI 3.14159265358979323846
 # endif
 
-# define PLAYER_SPEED 		5
-# define ROTATION_SPEED 	5
+# define PLAYER_SPEED 		3
+# define ROTATION_SPEED     3
 # define FOV				60
-# define TILESIZE 			40
+# define TILESIZE 			100
 # define RADIUS 			TILESIZE / 10
 # define window_width 		800
 # define window_height 		1000

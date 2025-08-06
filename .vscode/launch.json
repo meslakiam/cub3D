@@ -7,10 +7,11 @@
         "request": "launch",
         "program": "${workspaceFolder}/a.out",
         "args": [
-          "--leak-check=full",
-          "--track-origins=yes",
-          "--show-leak-kinds=all",
-          "${workspaceFolder}/a.out"
+          // "--leak-check=full",
+          // "--track-origins=yes",
+          // "--show-leak-kinds=all",
+          // "${workspaceFolder}/a.out"
+          "map.cub"
         ],
         "stopAtEntry": false,
         "cwd": "${workspaceFolder}",

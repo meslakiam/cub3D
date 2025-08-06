@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:02:21 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/27 19:25:14 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/06 18:18:31 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,14 +136,21 @@ void    draw_FOV(void)
     while (i < num_of_rays)
     {
         cast_ray(ray_angle);
-        draw_line(round(v_player()->p_x), round(v_player()->p_y), round(v_player()->end_p_x) , round(v_player()->end_p_y) , 0x00FF0000);
+        //draw_line(round(v_player()->p_x), round(v_player()->p_y), round(v_player()->end_p_x) , round(v_player()->end_p_y) , 0x00FF0000);
+        // draw_pixel(v_player()->end_p_x, v_player()->end_p_y, 0x00FF0000);
+        // v_player()->end_p_x = (int)v_player()->end_p_x;
+        // v_player()->end_p_y = (int)v_player()->end_p_y;
+        my_mlx_pixel_put(data->map_img, v_player()->end_p_x, v_player()->end_p_y, 0xff0000);
         render(i, ray_angle);
         ray_angle += (double)FOV / (double)num_of_rays;
         i++;
     }
-    shrinked_map = mlx_shrink_img(data->map_img, v_global()->map_img->img_width / 2, v_global()->map_img->img_height / 2);
+    // cast_ray(player_angle);
+    // draw_circle(v_player()->end_p_y, v_player()->end_p_x,2 ,0xff0000);
+    // my_mlx_pixel_put(data->map_img, v_player()->end_p_x, v_player()->end_p_y, 0xff0000);
+    // shrinked_map = mlx_shrink_img(data->map_img, v_global()->map_img->img_width / 2, v_global()->map_img->img_height / 2);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->win_img->img, 0, 0);
-    mlx_put_image_to_window(data->mlx, data->mlx_win, shrinked_map->img, 0, 0);
+    // mlx_put_image_to_window(data->mlx, data->mlx_win, data->map_img->img, 0, 0);
 }
 
 int    move_the_player(void)

@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:41:15 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/19 19:38:53 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/05 15:55:09 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@
 // typedef struct s_data t_data;
 
 t_map   *v_map(void);
+void    draw_ray_pixel(int y, int x, int color);
 void    draw_pixel(int y, int x, int color);
 void    draw_square(int y, int x, int color);
 void    draw_circle(double center_y, double center_x, int radius, int color);
