@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 07:06:45 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/07/11 16:02:48 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/07/19 18:33:51 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdlib.h>
 # include <unistd.h>
 # include "../garbage_collector/garbage_collector.h"
-# include "../ft_func/ft_func.h"
+#include "../helper_functions/helper.h"
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 100

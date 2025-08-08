@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_save_mem.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 18:13:36 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/04/14 00:38:26 by oel-bann         ###   ########.fr       */
+/*   Created: 2025/03/25 01:47:33 by imeslaki          #+#    #+#             */
+/*   Updated: 2025/06/18 16:02:42 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,32 +38,4 @@ void	save_mem(void *mem)
 	current_working_mem(0, 1);
 	new->mem = mem;
 	add_mem(new);
-}
-
-void	add_img(t_mem_list *node)
-{
-	t_mem_list	**list;
-	t_mem_list	*head;
-
-	list = ft_img_list();
-	if (!(*list))
-	{
-		*list = node;
-		return ;
-	}
-	head = *list;
-	while (head && head->next)
-		head = head->next;
-	head->next = node;
-}
-
-void	save_img(void *mem)
-{
-	t_mem_list	*new;
-
-	current_working_mem(mem, 0);
-	new = ft_calloc_without_save(1, sizeof(t_mem_list));
-	current_working_mem(0, 1);
-	new->mem = mem;
-	add_img(new);
 }

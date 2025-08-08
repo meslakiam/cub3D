@@ -6,14 +6,14 @@
 /*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 19:12:16 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/07/16 12:05:03 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/07/24 19:12:18 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PARSING_H
 #define PARSING_H
 
-#include "../ft_func/ft_func.h"
+#include "../helper_functions/helper.h"
 #include "../get/get_next_line.h"
 
 

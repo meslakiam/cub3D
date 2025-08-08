@@ -3,14 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_free.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 18:13:28 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/07/19 13:32:10 by oel-bann         ###   ########.fr       */
+/*   Created: 2025/03/25 01:47:25 by imeslaki          #+#    #+#             */
+/*   Updated: 2025/06/18 16:03:42 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube3d.h"
 #include "garbage_collector.h"
 
 void	ft_free_all(void)
@@ -40,11 +39,11 @@ void	find_to_free(void *mem)
 	t_mem_list	*prev;
 
 	head = (*ft_mem_list());
-	while (head)
+	while (head && head->next)
 	{
 		prev = head;
 		head = head->next;
-		if (head->mem == mem)
+		if (head && head->mem == mem)
 		{
 			prev->next = head->next;
 			free(head->mem);
@@ -61,7 +60,7 @@ void	ft_free(void *mem)
 	t_mem_list	*head;
 
 	mems = ft_mem_list();
-	if (!(*mems))
+	if (!(*mems) || !mem)
 		return ;
 	head = (*mems);
 	if ((*mems)->mem == mem)
@@ -72,21 +71,4 @@ void	ft_free(void *mem)
 		return ;
 	}
 	find_to_free(mem);
-}
-
-void	ft_destroy_all(void)
-{
-	t_mem_list	**list;
-	t_mem_list	*tmp;
-
-	list = ft_img_list();
-	if (!list || !(*list))
-		return ;
-	while (*list)
-	{
-		tmp = *list;
-		*list = (*list)->next;
-		mlx_destroy_image(*(g_mlx()), tmp->mem);
-		free(tmp);
-	}
 }

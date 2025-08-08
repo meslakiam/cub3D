@@ -6,7 +6,7 @@
 /*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 03:20:01 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/07/10 11:05:34 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/07/20 20:13:27 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,11 @@ char **copy_map_in_tab()
 	new_map = ft_calloc(get_map_hight(1) + 1, sizeof(char *));
 	while (map)
 	{
+		if (is_newline(map->map_line))
+		{
+			write (2, "Error \n ---> Newline Detected In The Map\n", 41);
+			ft_exit(255);
+		}
 		new_map[i] = get_line(map->map_line);
 		i++;
 		map = map->next;
@@ -106,13 +111,13 @@ void remove_extra_from_map()
 	map = *get_map();
 	while (map->next)
 		map = map->next;
-	while (map)
+	while (is_newline(map->map_line))
 	{
 		prev = map->prev;
-		if (is_newline(map->map_line))
-		{
+		// if (is_newline(map->map_line))
+		// {
 			ft_lstremove(get_map(), map);
-		}
+		// }
 		map = prev;
 	}
 	get_final_map(1, copy_map_in_tab());

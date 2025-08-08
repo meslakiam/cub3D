@@ -6,17 +6,11 @@
 /*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 06:07:03 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/07/16 18:58:32 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/07/24 19:12:45 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
-
-t_map_data *get_map_info()
-{
-    static t_map_data data;
-    return (&data);
-}
 
 t_map **get_map()
 {

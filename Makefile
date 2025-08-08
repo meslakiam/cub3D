@@ -1,31 +1,40 @@
-NAME = cube3d
+NAME = cub3d
 
 CC = cc
 
-#-Wall -Wextra -Werror 
+# CFLAGS = -Wall -Wextra -Werror
 
-CFLAGS = -I/usr/include -Imlx_linux -O3 -g
+MLX_FLAGS = -lmlx -lX11 -lXext -lm -lz
 
-SRC = ./cube3d.c garbage_collector/ft_calloc.c garbage_collector/ft_exit.c garbage_collector/ft_free.c garbage_collector/ft_save_mem.c  garbage_collector/mem_list.c \
-./parsing/check_ext_isvalid.c ./parsing/fill_cube_face_texture.c ./parsing/fill_map_infos.c ./parsing/check_texture.c ./parsing/check_map_component.c \
-./parsing/parssing_geters.c ./parsing/remove_map_extra.c ./parsing/check_map.c ./ft_func/ft_atoi.c ./ft_func/ft_open.c ./ft_func/ft_strncmp.c\
-./ft_func/ft_strchr.c ./ft_func/ft_strrchr.c ./ft_func/ft_strdup.c ./ft_func/ft_strjoin.c ./ft_func/ft_strlcat.c ./ft_func/ft_strlen.c ./get/get_next_line_utils.c\
-./ft_func/ft_split.c ./ft_func/ft_lstnew.c ./ft_func/ft_lstadd_back.c ./ft_func/ft_lstremove.c ./ft_func/ft_memset.c  ./get/get_next_line.c \
-./window_tools.c ./create_map_imgs.c ./create_imgs_tools.c ft_func/ft_lstadd_img.c ft_func/ft_lstnew_img.c ft_func/ft_strnstr.c ft_func/ft_lstadd_back_pos_img.c\
-./draw_map.c
+
+MAIN =  global.c draw_map.c 
+
+GARBAGE_COLLECTOR = garbage_collector/ft_calloc.c garbage_collector/ft_exit.c garbage_collector/ft_free.c \
+	garbage_collector/ft_save_mem.c garbage_collector/mem_list.c
+
+HELPER_FUNCTIONS = helper_functions/ft_atoi.c helper_functions/ft_is_digit.c helper_functions/ft_itoa.c helper_functions/ft_putstr_fd.c \
+	helper_functions/ft_split.c helper_functions/ft_str_join.c helper_functions/ft_strchr.c helper_functions/ft_strdup.c \
+	helper_functions/ft_strlen.c helper_functions/ft_substr.c helper_functions/is_alpha.c helper_functions/is_digit.c \
+
+PLAYER = player/key_handling.c player/player_movement.c
+
+SRC = $(MAIN) $(GARBAGE_COLLECTOR) $(HELPER_FUNCTIONS) $(PLAYER)
+
 OBJ = $(SRC:.c=.o)
 
-all : $(NAME)
+all: $(NAME)
 
-$(NAME) : $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) -Lmlx_linux -lmlx_Linux -L/usr/lib -Imlx_linux -lXext -lX11 -lm -lz -o $(NAME)
+$(NAME): $(OBJ)
+	$(CC) $(CFLAGS) $(OBJ) $(MLX_FLAGS) -o $(NAME)
 
 clean:
-	@rm -rf $(OBJ)
+	rm -rf $(OBJ)
 
 fclean: clean
-	@rm -rf $(NAME)
+	rm -rf $(NAME)
 
 re: fclean all
 
-.PHONY:  all clean fclean re
+.PHONY: all clean fclean re
+
+.SECONDARY : $(OBJ)

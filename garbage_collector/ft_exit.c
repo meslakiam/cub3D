@@ -3,23 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   ft_exit.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 18:13:22 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/07/19 11:14:54 by oel-bann         ###   ########.fr       */
+/*   Created: 2025/03/25 01:47:18 by imeslaki          #+#    #+#             */
+/*   Updated: 2025/05/29 16:12:31 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube3d.h"
 #include "garbage_collector.h"
 
 void	ft_exit(int status)
 {
-	ft_destroy_all();
-	if (*g_window())
-		mlx_destroy_window(*g_mlx(), *g_window());
-	mlx_destroy_display(*g_mlx());
-	free(*g_mlx());
 	ft_free_all();
 	exit(status);
 }

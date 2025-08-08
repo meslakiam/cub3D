@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_calloc.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 18:13:14 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/04/10 22:39:28 by oel-bann         ###   ########.fr       */
+/*   Created: 2025/03/25 01:47:02 by imeslaki          #+#    #+#             */
+/*   Updated: 2025/06/26 15:47:28 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	*ft_calloc_without_save(size_t n, size_t type_size)
 	mem = malloc(full_size);
 	if (!mem)
 	{
-		write(2, "Error\n -> memory allocation\n", 28);
+		perror("minishell: ");
 		ft_exit(1);
 		return (NULL);
 	}
@@ -53,4 +53,9 @@ void	*ft_calloc(size_t n, size_t type_size)
 	mem = ft_calloc_without_save(n, type_size);
 	save_mem(mem);
 	return (mem);
+}
+
+void	*ft_malloc(size_t n)
+{
+	return (ft_calloc(1, n));
 }

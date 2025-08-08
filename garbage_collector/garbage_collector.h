@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   garbage_collector.h                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/04/10 18:13:43 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/04/10 18:42:14 by oel-bann         ###   ########.fr       */
+/*   Created: 2025/03/25 01:47:46 by imeslaki          #+#    #+#             */
+/*   Updated: 2025/06/18 16:03:54 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 # include <errno.h>
 # include <stdio.h>
 # include <stdlib.h>
-# include <unistd.h>
 
 typedef struct s_mem_list
 {
@@ -34,8 +33,8 @@ void					ft_free(void *mem);
 void					add_mem(t_mem_list *node);
 void					save_mem(void *mem);
 void					ft_bzero(void *mem, size_t size);
-void					save_img(void *mem);
+void					*ft_malloc(size_t n);
 t_mem_list				**ft_img_list(void);
-void					ft_destroy_all(void);
+void					ft_destory_all(void);
 
 #endif
