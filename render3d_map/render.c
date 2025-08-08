@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:50:28 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/05 15:52:47 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/08 17:31:05 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,7 @@ int get_wall_texture()
     return (tex_id);
 }
 
+
 int get_wall_strip_hight(int r_angle)
 {
     int wall_strip_hight;
@@ -82,7 +83,7 @@ int get_wall_strip_hight(int r_angle)
 
     radian = (r_angle - v_player()->rotation_angle) * (M_PI / 180.0);
     correct_dis = cos(radian) * distance(v_player()->end_p_x, v_player()->end_p_y);
-    wall_strip_hight = 50000/ correct_dis;
+    wall_strip_hight = (WALL_HIGHT/ correct_dis) * ((v_global()->win_width/2)/tan(DEG_TO_RAD(FOV / 2)));
 }
 
 void render(int ray_index, double ray_angle)

@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:31:03 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/06 13:14:23 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/08 17:36:31 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,11 @@
 #  define M_PI 3.14159265358979323846
 # endif
 
-# define PLAYER_SPEED 		3
-# define ROTATION_SPEED     3
+# define PLAYER_SPEED 		5
+# define ROTATION_SPEED     5
 # define FOV				60
-# define TILESIZE 			100
+# define TILESIZE 			40
+# define WALL_HIGHT         40
 # define RADIUS 			TILESIZE / 10
 # define window_width 		800
 # define window_height 		1000

@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:02:21 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/06 18:18:31 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/08 17:29:14 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,11 +136,11 @@ void    draw_FOV(void)
     while (i < num_of_rays)
     {
         cast_ray(ray_angle);
-        //draw_line(round(v_player()->p_x), round(v_player()->p_y), round(v_player()->end_p_x) , round(v_player()->end_p_y) , 0x00FF0000);
+        // draw_line(round(v_player()->p_x), round(v_player()->p_y), round(v_player()->end_p_x) , round(v_player()->end_p_y) , 0x00FF0000);
         // draw_pixel(v_player()->end_p_x, v_player()->end_p_y, 0x00FF0000);
         // v_player()->end_p_x = (int)v_player()->end_p_x;
         // v_player()->end_p_y = (int)v_player()->end_p_y;
-        my_mlx_pixel_put(data->map_img, v_player()->end_p_x, v_player()->end_p_y, 0xff0000);
+        my_mlx_pixel_put(data->map_img, round(v_player()->end_p_x), round(v_player()->end_p_y), 0xff0000);
         render(i, ray_angle);
         ray_angle += (double)FOV / (double)num_of_rays;
         i++;

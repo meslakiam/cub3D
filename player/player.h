@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:56:40 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/05 16:50:35 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/08 16:04:08 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,25 @@ typedef struct s_player
 	double	y_step_h;
 	
 }			t_player;
+
+// typedef	struct s_step
+// {
+// 	double	x;
+// 	double	y;
+// }			t_step;
+
+typedef	struct s_point
+{
+	double	x;
+	double	y;
+}			t_point;
+
+typedef struct s_ray_data
+{
+	t_point	hit_point;
+	double	angle;
+	t_point  step;
+}			t_ray_data;
 
 // typedef struct s_data t_data;
 // typedef struct s_map t_map;
