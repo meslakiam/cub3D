@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:23:56 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/07 13:14:53 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/08 22:03:49 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ void fill_data(void)
      data->map_img = ft_malloc(sizeof(t_data));
 	// data->win_width = get_map_info()->win_w * TILESIZE;
 	// data->win_height = get_map_info()->win_h * TILESIZE;
+    
     data->win_height = 1080;
     data->win_width = 1920;
 
@@ -39,6 +40,27 @@ void fill_data(void)
 	data->map_img->addr = mlx_get_data_addr(data->map_img->img, &data->map_img->bits_per_pixel, &data->map_img->line_length, &data->map_img->endian);
 }
 
+void	get_player_direction(void)
+{
+	if (v_player()->direction == 'N')
+		v_player()->rotation_angle = 270;
+	if (v_player()->direction == 'S')
+		v_player()->rotation_angle = 90;
+	if (v_player()->direction == 'E')
+		v_player()->rotation_angle = 360;
+	if (v_player()->direction == 'W')
+		v_player()->rotation_angle = 180;
+}
+
+void	init_player(void)
+{
+	v_player()->p_x = get_map_info()->player_x * TILESIZE + TILESIZE / 2;
+    v_player()->p_y = get_map_info()->player_y * TILESIZE + TILESIZE / 2;
+    printf ("----------------------%c---------------------\n", get_final_map(0, 0)[get_map_info()->player_y][get_map_info()->player_x]);
+    v_player()->direction = get_map_info()->direction;
+	get_player_direction();
+}
+
 int main(int argc, char *argv[])
 {
 
@@ -48,6 +70,7 @@ int main(int argc, char *argv[])
     {
         check_map(argv[1]);
         fill_data();
+        init_player();
         // draw_map();
         // t_data dd;
         // dd.img = mlx_xpm_file_to_image(v_global()->mlx, "x.xpm", &dd.img_width, &dd.img_height);

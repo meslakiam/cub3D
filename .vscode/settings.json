@@ -8,6 +8,10 @@
         "stdio.h": "c",
         "stdlib.h": "c",
         "player_movement.h": "c",
-        "player_movment.h": "c"
+        "player_movment.h": "c",
+        "cube3d.h": "c",
+        "utility": "c",
+        "stdbool.h": "c",
+        "cmath": "c"
     }
 }

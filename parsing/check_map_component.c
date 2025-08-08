@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_component.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 12:10:37 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/05 15:39:42 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/08 21:27:03 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void get_player_pos(char **map_c)
         j = 0;
         while (map[i][j])
         {
-            if (ft_strchr("NSEW", map[i][j]))
+            if (ft_strchr("SNEW", map[i][j]))
             {
                 get_map_info()->player_x = j;
                 get_map_info()->player_y = i;
@@ -152,8 +152,9 @@ int check_closed_wall()
        i++;
     }
     get_player_pos(map);
-    printf("player x = %d | player y= %d\n",get_map_info()->player_x, get_map_info()->player_y);
     flood_fill(map, get_map_info()->player_x, get_map_info()->player_y);
+    get_map_info()->player_x -= 1;
+    get_map_info()->player_y -= 1;
      i = 0;
     while (map[i])
     {

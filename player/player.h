@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:56:40 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/05 10:06:34 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/08 23:10:12 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,31 @@ typedef struct s_player
 	int		was_hit_vertical;
 	int		p_col;
 	int		p_row;
+	double	x_step_v;
+	double	y_step_v;
+	double	x_step_h;
+	double	y_step_h;
+	
 }			t_player;
+
+// typedef	struct s_step
+// {
+// 	double	x;
+// 	double	y;
+// }			t_step;
+
+typedef	struct s_point
+{
+	double	x;
+	double	y;
+}			t_point;
+
+typedef struct s_ray_data
+{
+	t_point	hit_point;
+	double	angle;
+	t_point  step;
+}			t_ray_data;
 
 // typedef struct s_data t_data;
 // typedef struct s_map t_map;

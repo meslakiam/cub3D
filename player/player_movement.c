@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player_movement.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:02:21 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/07 13:15:08 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/08 21:20:40 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,6 +153,7 @@ int    move_the_player(void)
     double  new_x;
     double  new_y;
 
+    
     // frames();
     render_floor_and_sky();
     v_player()->save_x = v_player()->p_x;
