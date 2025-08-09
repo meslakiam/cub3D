@@ -6,7 +6,7 @@
 /*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 04:18:45 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/03 01:34:50 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/05 19:33:52 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,15 +57,25 @@ void set_textures()
         first = 1;
 }
 
-double get_tex_step(int texture, int ligne_h)
+double get_tex_step(int texture, int animation, int ligne_h)
 {
     int image_hight;
     double step;
 
     if (texture == TEX_EAST)
-        image_hight = get_textures(TEX_EAST)->img_height;
+    {
+        if (animation)
+            image_hight = get_animation_wall(0, TEX_EAST)->img_height;
+        else
+            image_hight = get_textures(TEX_EAST)->img_height;
+    }
     else if (texture == TEX_WEST)
-        image_hight = get_textures(TEX_WEST)->img_height;
+    {
+        if (animation)
+            image_hight = get_animation_wall(0, TEX_WEST)->img_height;
+        else
+            image_hight = get_textures(TEX_WEST)->img_height;
+    }
     else if (texture == TEX_NORTH)
         image_hight = get_textures(TEX_NORTH)->img_height;
     else if (texture == TEX_SOUTH)
@@ -74,16 +84,16 @@ double get_tex_step(int texture, int ligne_h)
     return (step);
 }
 
-double get_tex_start(int start_y, int end_y, int texture)
+double get_tex_start(int start_y, int end_y, int texture, int animation)
 {
     if (start_y < 0)
-        return (abs(start_y) * get_tex_step(texture, end_y - start_y));
+        return (abs(start_y) * get_tex_step(texture, animation, end_y - start_y));
     return (0);
 }
 
-double get_tex_end(int start_y, int end_y, int texture)
+double get_tex_end(int start_y, int end_y, int texture, int animation)
 {
     if (end_y > v_global()->win_height)
-        return ((abs(start_y) + v_global()->win_height) * get_tex_step(texture, end_y - start_y));
+        return ((abs(start_y) + v_global()->win_height) * get_tex_step(texture, animation, end_y - start_y));
     return (get_textures(texture)->img_height);
 }

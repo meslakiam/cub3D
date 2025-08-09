@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:35:48 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/05 15:57:03 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/07 13:13:12 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void    draw_pixel(int y, int x, int color)
     t_data  *data;
     char *tmp;
 
-    data = v_global()->map_img;
+    data = v_global()->win_img;
     if (x < 0 || y < 0 || x >= get_map_info()->win_w * TILESIZE || y >= get_map_info()->win_h * TILESIZE)
         return;
     tmp = data->addr + ((y * data->line_length) + (x * (data->bits_per_pixel / 8)));
@@ -106,7 +106,7 @@ void    draw_circle(double center_y, double center_x, int radius, int color)
         x = -radius;
         while (x <= radius)
         {
-            if (x * x + y * y <= radius * radius) // inside the circle
+            if (x * x + y * y <= radius * radius)
                 draw_pixel((int)round(center_y) + y, (int)round(center_x) + x, color);
             x++;
         }

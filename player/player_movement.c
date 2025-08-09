@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:02:21 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/08 17:29:14 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/08 21:20:40 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,32 +125,27 @@ void    draw_FOV(void)
     int     num_of_rays;
     t_global	*data;
 	t_data		*shrinked_map;
-    data = v_global();
-
     int i = 0;
 
+    data = v_global();
     num_of_rays = v_global()->win_width;
     player_angle = v_player()->rotation_angle;
     half_fov = FOV / 2;
     ray_angle = player_angle - half_fov;
+    set_textures();
+    get_animation_wall(1, 0);
     while (i < num_of_rays)
     {
         cast_ray(ray_angle);
-        // draw_line(round(v_player()->p_x), round(v_player()->p_y), round(v_player()->end_p_x) , round(v_player()->end_p_y) , 0x00FF0000);
-        // draw_pixel(v_player()->end_p_x, v_player()->end_p_y, 0x00FF0000);
-        // v_player()->end_p_x = (int)v_player()->end_p_x;
-        // v_player()->end_p_y = (int)v_player()->end_p_y;
-        my_mlx_pixel_put(data->map_img, round(v_player()->end_p_x), round(v_player()->end_p_y), 0xff0000);
+        draw_line(round(v_player()->p_x), round(v_player()->p_y), round(v_player()->end_p_x) , round(v_player()->end_p_y) , 0x00FF0000);
         render(i, ray_angle);
         ray_angle += (double)FOV / (double)num_of_rays;
         i++;
     }
-    // cast_ray(player_angle);
-    // draw_circle(v_player()->end_p_y, v_player()->end_p_x,2 ,0xff0000);
-    // my_mlx_pixel_put(data->map_img, v_player()->end_p_x, v_player()->end_p_y, 0xff0000);
-    // shrinked_map = mlx_shrink_img(data->map_img, v_global()->map_img->img_width / 2, v_global()->map_img->img_height / 2);
+    
+    shrinked_map = mlx_shrink_img(data->map_img, v_global()->map_img->img_width / 2, v_global()->map_img->img_height / 2);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->win_img->img, 0, 0);
-    // mlx_put_image_to_window(data->mlx, data->mlx_win, data->map_img->img, 0, 0);
+    draw_mini_map();
 }
 
 int    move_the_player(void)
@@ -158,6 +153,7 @@ int    move_the_player(void)
     double  new_x;
     double  new_y;
 
+    
     // frames();
     render_floor_and_sky();
     v_player()->save_x = v_player()->p_x;
@@ -170,7 +166,7 @@ int    move_the_player(void)
         player_move_side_walk();
     v_player()->p_x = v_player()->save_x;
     v_player()->p_y = v_player()->save_y;
-    draw_map();
+    // draw_map();
     draw_FOV();
     return 0;
 }

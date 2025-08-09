@@ -6,7 +6,7 @@
 /*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 03:24:07 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/07/26 03:29:46 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:31:00 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,6 +38,7 @@ int         move_the_player(void);
 void        draw_circle(double y, double x, int radius, int color);
 void		draw_map(void);
 void		fill_data(void);
+void        draw_mini_map();
 
 
 

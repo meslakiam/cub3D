@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:50:28 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/08 17:31:05 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/08 23:27:17 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void render_floor_and_sky()
         }
         y++;
     }
+    
 }
 
 void    draw_pixel_depend_distance(int y, int x, int color)
@@ -43,7 +44,7 @@ void    draw_pixel_depend_distance(int y, int x, int color)
     double dis_max;
     double opacity;
 
-    dis_max = sqrt((get_map_info()->win_w * TILESIZE) * (get_map_info()->win_w * TILESIZE) +  (get_map_info()->win_h * TILESIZE) * (get_map_info()->win_w * TILESIZE)) - 80;
+    dis_max = (get_map_info()->win_h * TILESIZE);
     dis = distance(v_player()->end_p_x, v_player()->end_p_y);
     opacity = 1 -  dis / dis_max * dis / dis_max;
     data = v_global()->win_img;
@@ -74,7 +75,6 @@ int get_wall_texture()
     return (tex_id);
 }
 
-
 int get_wall_strip_hight(int r_angle)
 {
     int wall_strip_hight;
@@ -84,6 +84,24 @@ int get_wall_strip_hight(int r_angle)
     radian = (r_angle - v_player()->rotation_angle) * (M_PI / 180.0);
     correct_dis = cos(radian) * distance(v_player()->end_p_x, v_player()->end_p_y);
     wall_strip_hight = (WALL_HIGHT/ correct_dis) * ((v_global()->win_width/2)/tan(DEG_TO_RAD(FOV / 2)));
+}
+
+t_data *get_animation_wall(int set, int wall_tex)
+{
+    
+    // static t_data *west_torch_wall;
+    // static t_data *east_torch_wall;
+
+    // if (set == 1)
+    // {
+    //     west_torch_wall = &get_west_torch_lst()->content;
+    //     east_torch_wall = &get_east_torch_lst()->content;
+    // }
+    // if (is_map_corners() == TEX_EAST)
+    //     return (east_torch_wall);
+    // else if (is_map_corners() == TEX_WEST)
+    //     return (west_torch_wall);
+    return (get_textures(wall_tex));
 }
 
 void render(int ray_index, double ray_angle)
@@ -97,31 +115,22 @@ void render(int ray_index, double ray_angle)
     double  step;
     int color;
 
-    set_textures();
+    int corner = is_map_corners();
     wall_tex = get_wall_texture();
     wall_strip_hight = get_wall_strip_hight(ray_angle);
     start_y = (v_global()->win_img->img_height / 2)  - (wall_strip_hight / 2);
     end_y = start_y + wall_strip_hight;
-    img_start_h = get_tex_start(start_y, end_y, wall_tex);
-    step = get_tex_step(wall_tex, (end_y - start_y));
+    img_start_h = get_tex_start(start_y, end_y, wall_tex, corner);
+    step = get_tex_step(wall_tex, corner,(end_y - start_y));
     if (start_y < 0)
         start_y = 0;
     if (end_y > v_global()->win_height)
         end_y = v_global()->win_height;
-    
     while (start_y < end_y)
     {
-        color = my_mlx_get_pixel_color(get_textures(wall_tex), get_img_start_w(get_textures(wall_tex)->img_width), img_start_h);
+        color = my_mlx_get_pixel_color(get_animation_wall(0, wall_tex), get_img_start_w(get_animation_wall(0, wall_tex)->img_width), img_start_h);
         draw_pixel_depend_distance(start_y, ray_index, color);
         img_start_h += step;
         start_y++;
     }
 }
-// if (get_wall_texture() == TEX_EAST)
-//             draw_pixel_depend_distance(round(y), ray_index, 0xFF0000);
-//         else if (get_wall_texture() == TEX_WEST)
-//             draw_pixel_depend_distance(round(y), ray_index, 0x00FF00);
-//         else if (get_wall_texture() == TEX_SOUTH)
-//             draw_pixel_depend_distance(round(y), ray_index, 0x0000FF);
-//         else if (get_wall_texture() == TEX_NORTH)
-//             draw_pixel_depend_distance(round(y), ray_index, 0xFFFFFF);

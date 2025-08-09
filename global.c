@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:49:00 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/08 15:48:20 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/07/19 19:23:14 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@
 t_map_data *get_map_info(void)
 {
     static t_map_data data;
-
     return (&data);
 }
 

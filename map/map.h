@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   map.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:41:15 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/05 15:55:09 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/07 12:14:54 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,7 @@
 
 
 
-// typedef struct s_data t_data;
 
-t_map   *v_map(void);
 void    draw_ray_pixel(int y, int x, int color);
 void    draw_pixel(int y, int x, int color);
 void    draw_square(int y, int x, int color);
