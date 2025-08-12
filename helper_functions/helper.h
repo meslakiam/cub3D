@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   helper.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 03:25:53 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/04 20:03:54 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/12 17:48:29 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,8 +66,12 @@ typedef struct s_global
 {
 	void	*mlx;
 	void	*mlx_win;
-	int		win_width;
-	int		win_height;
+	int		mouse_move;
+	int		mouse_direction;
+	int 	save_mouse_status;
+	int 	save_mouse_event_status;
+	long 	last_update_time;
+	int		check_mouse_sides;
 	t_data	*win_img;
 	t_data	*map_img;
 }			t_global;

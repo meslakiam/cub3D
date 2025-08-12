@@ -6,19 +6,44 @@ CC = cc
 
 MLX_FLAGS = -lmlx -lX11 -lXext -lm -lz
 
+MAIN = global.c map/draw_map.c map/draw_functions.c cub3d.c
 
-MAIN =  global.c draw_map.c 
+GARBAGE_COLLECTOR = garbage_collector/ft_calloc.c garbage_collector/ft_exit.c \
+	garbage_collector/ft_free.c garbage_collector/ft_save_mem.c \
+	garbage_collector/mem_list.c
 
-GARBAGE_COLLECTOR = garbage_collector/ft_calloc.c garbage_collector/ft_exit.c garbage_collector/ft_free.c \
-	garbage_collector/ft_save_mem.c garbage_collector/mem_list.c
+HELPER_FUNCTIONS = helper_functions/ft_atoi.c helper_functions/ft_lstadd_back.c \
+	helper_functions/ft_lstadd_back_imgs.c helper_functions/ft_lstadd_back_rays.c \
+	helper_functions/ft_lstadd_img.c helper_functions/ft_lstnew.c \
+	helper_functions/ft_lstnew_img.c helper_functions/ft_memset.c \
+	helper_functions/ft_split.c helper_functions/ft_strchr.c \
+	helper_functions/ft_strdup.c helper_functions/ft_strlen.c \
+	helper_functions/ft_strlcat.c helper_functions/ft_strncmp.c \
+	helper_functions/ft_strnstr.c helper_functions/ft_strrchr.c \
+	helper_functions/blend_colors.c helper_functions/create_image.c \
+	helper_functions/mlx_get_pixel_color.c helper_functions/mlx_put_pixel.c \
+	helper_functions/mlx_copy_image.c helper_functions/mlx_shrink_image.c \
+	helper_functions/ft_open.c helper_functions/ft_lstremove.c helper_functions/ft_strjoin.c
 
-HELPER_FUNCTIONS = helper_functions/ft_atoi.c helper_functions/ft_is_digit.c helper_functions/ft_itoa.c helper_functions/ft_putstr_fd.c \
-	helper_functions/ft_split.c helper_functions/ft_str_join.c helper_functions/ft_strchr.c helper_functions/ft_strdup.c \
-	helper_functions/ft_strlen.c helper_functions/ft_substr.c helper_functions/is_alpha.c helper_functions/is_digit.c \
+PARSING = parsing/check_ext_isvalid.c parsing/check_map.c \
+	parsing/check_map_component.c parsing/check_texture.c \
+	parsing/fill_cube_face_texture.c parsing/fill_map_infos.c \
+	parsing/parssing_geters.c parsing/remove_map_extra.c
 
-PLAYER = player/key_handling.c player/player_movement.c
+PLAYER = player/init_player.c player/is_wall.c \
+	player/key_handling.c player/player_movement.c
 
-SRC = $(MAIN) $(GARBAGE_COLLECTOR) $(HELPER_FUNCTIONS) $(PLAYER)
+RAY_CASTING = ray_casting/cast_ray.c ray_casting/ray_info.c
+
+RENDER3D_MAP = render3d_map/create_imgs_tools.c render3d_map/render.c \
+	render3d_map/render_tools.c render3d_map/texture.c
+
+MINI_MAP = mini_map/create_mini_map.c
+
+GET_NEXT_LINE = get/get_next_line.c get/get_next_line_utils.c
+
+SRC = $(MAIN) $(GARBAGE_COLLECTOR) $(HELPER_FUNCTIONS) $(PARSING) \
+	$(PLAYER) $(RAY_CASTING) $(RENDER3D_MAP) $(MINI_MAP) $(GET_NEXT_LINE)
 
 OBJ = $(SRC:.c=.o)
 

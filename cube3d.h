@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cube3d.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 03:24:07 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/07 12:31:00 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/09 15:03:37 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,17 +28,19 @@
 # include "map/map.h"
 # include "defines.h"
 # include "render3d_map/render.h"
+#include "ray_casting/ray_casting.h"
 
 t_data	*get_pos_img(char dir, int rotation);
 t_data	* get_wall_img();
 t_data	* get_floor_img();
 
 t_map_data *get_map_info(void);
-int         move_the_player(void);
+void         move_the_player(void);
 void        draw_circle(double y, double x, int radius, int color);
 void		draw_map(void);
 void		fill_data(void);
 void        draw_mini_map();
+void        cast_rays_and_render_game(void);
 
 
 

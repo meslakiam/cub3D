@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   draw_functions.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:35:48 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/07 13:13:12 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/11 11:11:39 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void    draw_ray_pixel(int y, int x, int color)
     double dis;
     double opacity;
 
-    dis = distance(x, y);
+    dis = distance_from_player(x, y);
     if (dis < 10)
         opacity = 1;
     else
@@ -55,19 +55,19 @@ void    draw_square(int y, int x, int color)
     while (y < start_y + (TILESIZE - 1))
     {
         x = start_x;
-        while (x < start_x + (TILESIZE - 1))
+        while (x < start_x + (TILESIZE - 1) && x >= 0 && x < window_width && y >= 0 && y < window_height)
         {
             draw_pixel(y, x, color);
             x++;
         }
-        if(x == start_x + (TILESIZE - 1))
+        if(x == start_x + (TILESIZE - 1)&& x >= 0 && x < window_width && y >= 0 && y < window_height)
             draw_pixel(y, x, 0x000000);
         y++;
     }
-    if(y == start_y + (TILESIZE - 1))
+    if(y == start_y + (TILESIZE - 1)&& x >= 0 && x < window_width && y >= 0 && y < window_height)
     {
         x = start_x;
-        while (x < start_x + (TILESIZE))
+        while (x < start_x + (TILESIZE)&& x >= 0 && x < window_width && y >= 0 && y < window_height)
         {
             draw_pixel(y, x, 0x0000000);
             x++;

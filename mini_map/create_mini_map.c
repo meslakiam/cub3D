@@ -6,11 +6,13 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 00:24:22 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/08 23:02:06 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/12 18:00:00 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d.h"
+
+// # define MINI_MAP_VIEW 20
 
 int get_mini_map_color(double x, double y)
 {
@@ -60,20 +62,3 @@ void draw_mini_map()
     }
     draw_circle(MINI_MAP_MARGIN + MINI_MAP_R, MINI_MAP_MARGIN + MINI_MAP_R, RADIUS, 0x00FF0000);
 }
-
-//   int y = -radius;
-//     int x;
-
-    
-//     while (y <= radius)
-//     {
-//         x = -radius;
-//         while (x <= radius)
-//         {
-//             if (x * x + y * y <= radius * radius)
-//                 draw_pixel((int)round(center_y) + y, (int)round(center_x) + x, color);
-//             x++;
-//         }
-//         y++;
-//     }
-// }

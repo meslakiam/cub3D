@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:56:40 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/08 23:10:12 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/12 17:17:16 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,30 +46,22 @@ typedef struct s_player
 // 	double	y;
 // }			t_step;
 
-typedef	struct s_point
-{
-	double	x;
-	double	y;
-}			t_point;
 
-typedef struct s_ray_data
-{
-	t_point	hit_point;
-	double	angle;
-	t_point  step;
-}			t_ray_data;
 
-// typedef struct s_data t_data;
-// typedef struct s_map t_map;
+
 
 // t_map   *v_map(void);
 // t_data		*v_data(void);
+
 t_player	*v_player(void);
 
-double		distance(double x2, double y2);
+int 		check_wall_y(double x1, double y1, double angle, int d);
+int 		check_wall_x(double x1, double y1, double angle, int d);
+double 		distance_from_player(double x2, double y2);
 int			is_wall(int map_x, int map_y);
 int			key_press(int keycode);
 int			key_release(int keycode);
-int			move_the_player(void);
-void		cast_ray(double angle);
+void		move_the_player(void);
+
+void		init_player(void);
 #endif

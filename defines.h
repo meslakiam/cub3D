@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:31:03 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/08 23:15:28 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/12 17:25:31 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,19 +20,25 @@
 # include <unistd.h>
 # include <sys/time.h>
 # include <stdbool.h> 
+# include <sys/time.h>
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846
 # endif
 
-# define PLAYER_SPEED 		5
+# define window_height      1080
+# define window_width       1920
+
+# define MOUSE_ROTATION_SPEED 3.2
 # define ROTATION_SPEED 	5
+# define PLAYER_SPEED 		2
+
+
 # define FOV				75
-# define TILESIZE 			40
-# define WALL_HIGHT         40
+# define TILESIZE 			20
+# define WALL_HIGHT         20
+#define PLAYER_RADIUS       2
 # define RADIUS 			TILESIZE / 10
-# define window_width 		800
-# define window_height 		1000
 # define DEG_TO_RAD(a) ((a)*M_PI / 180.0)
 
 # define MINI_MAP_MARGIN    50

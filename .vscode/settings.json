@@ -8,6 +8,15 @@
         "stdio.h": "c",
         "stdlib.h": "c",
         "player_movement.h": "c",
-        "player_movment.h": "c"
+        "player_movment.h": "c",
+        "player.h": "c",
+        "cube3d.h": "c",
+        "defines.h": "c",
+        "stdbool.h": "c",
+        "time.h": "c",
+        "ray_casting.h": "c",
+        "limits": "c",
+        "type_traits": "c",
+        "utility": "c"
     }
 }

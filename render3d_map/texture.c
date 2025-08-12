@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 04:18:45 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/05 19:33:52 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/09 14:30:11 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ double get_tex_start(int start_y, int end_y, int texture, int animation)
 
 double get_tex_end(int start_y, int end_y, int texture, int animation)
 {
-    if (end_y > v_global()->win_height)
-        return ((abs(start_y) + v_global()->win_height) * get_tex_step(texture, animation, end_y - start_y));
+    if (end_y > window_height)
+        return ((abs(start_y) + window_height) * get_tex_step(texture, animation, end_y - start_y));
     return (get_textures(texture)->img_height);
 }

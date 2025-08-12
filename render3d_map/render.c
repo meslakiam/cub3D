@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:50:28 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/08 23:27:17 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/12 10:42:27 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,15 @@ void render_floor_and_sky()
 
     x = 0;
     y = 0;
-    while (y < v_global()->win_height)
+    while (y < window_height)
     {
         x = 0;
-        while (x < v_global()->win_width)
+        while (x < window_width)
         {
-            if (y > v_global()->win_height / 2)
-                my_mlx_pixel_put(v_global()->win_img, x, y, get_map_info()->f_rgb_tab[0] << 16 | get_map_info()->f_rgb_tab[1] << 8 | get_map_info()->f_rgb_tab[2]);
+            if (y > window_height / 2)
+                my_mlx_pixel_put(v_global()->win_img, x, y, get_map_info()->f_rgb_tab[0] << 10 | get_map_info()->f_rgb_tab[1] << 6 | get_map_info()->f_rgb_tab[3]);
             else
-                my_mlx_pixel_put(v_global()->win_img, x, y, get_map_info()->c_rgb_tab[0] << 16 | get_map_info()->c_rgb_tab[1] << 8 | get_map_info()->c_rgb_tab[2]);
+                my_mlx_pixel_put(v_global()->win_img, x, y, get_map_info()->c_rgb_tab[0] << 8 | get_map_info()->c_rgb_tab[1] << 5 | get_map_info()->c_rgb_tab[4]);
             x++;
         }
         y++;
@@ -45,11 +45,11 @@ void    draw_pixel_depend_distance(int y, int x, int color)
     double opacity;
 
     dis_max = (get_map_info()->win_h * TILESIZE);
-    dis = distance(v_player()->end_p_x, v_player()->end_p_y);
+    dis = distance_from_player(v_player()->end_p_x, v_player()->end_p_y);
     opacity = 1 -  dis / dis_max * dis / dis_max;
     data = v_global()->win_img;
     tmp = data->addr + ((y * data->line_length) + (x * (data->bits_per_pixel / 8)));
-    color = blend_colors(*(unsigned int *)tmp, color, opacity);
+    // color = blend_colors(*(unsigned int *)tmp, color, opacity);
     *(unsigned int *)tmp = color;
 }
 
@@ -82,8 +82,9 @@ int get_wall_strip_hight(int r_angle)
     double radian;
 
     radian = (r_angle - v_player()->rotation_angle) * (M_PI / 180.0);
-    correct_dis = cos(radian) * distance(v_player()->end_p_x, v_player()->end_p_y);
-    wall_strip_hight = (WALL_HIGHT/ correct_dis) * ((v_global()->win_width/2)/tan(DEG_TO_RAD(FOV / 2)));
+    correct_dis = cos(radian) * distance_from_player(v_player()->end_p_x, v_player()->end_p_y);
+    wall_strip_hight = (WALL_HIGHT/ correct_dis) * ((window_width / 2) / tan(DEG_TO_RAD(FOV / 2)));
+    return wall_strip_hight;
 }
 
 t_data *get_animation_wall(int set, int wall_tex)
@@ -124,8 +125,8 @@ void render(int ray_index, double ray_angle)
     step = get_tex_step(wall_tex, corner,(end_y - start_y));
     if (start_y < 0)
         start_y = 0;
-    if (end_y > v_global()->win_height)
-        end_y = v_global()->win_height;
+    if (end_y > window_height)
+        end_y = window_height;
     while (start_y < end_y)
     {
         color = my_mlx_get_pixel_color(get_animation_wall(0, wall_tex), get_img_start_w(get_animation_wall(0, wall_tex)->img_width), img_start_h);
