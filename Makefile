@@ -15,15 +15,16 @@ GARBAGE_COLLECTOR = garbage_collector/ft_calloc.c garbage_collector/ft_exit.c \
 HELPER_FUNCTIONS = helper_functions/ft_atoi.c helper_functions/ft_lstadd_back.c \
 	helper_functions/ft_lstadd_back_imgs.c helper_functions/ft_lstadd_back_rays.c \
 	helper_functions/ft_lstadd_img.c helper_functions/ft_lstnew.c \
-	helper_functions/ft_lstnew_img.c helper_functions/ft_memset.c \
-	helper_functions/ft_split.c helper_functions/ft_strchr.c \
-	helper_functions/ft_strdup.c helper_functions/ft_strlen.c \
-	helper_functions/ft_strlcat.c helper_functions/ft_strncmp.c \
-	helper_functions/ft_strnstr.c helper_functions/ft_strrchr.c \
-	helper_functions/blend_colors.c helper_functions/create_image.c \
-	helper_functions/mlx_get_pixel_color.c helper_functions/mlx_put_pixel.c \
-	helper_functions/mlx_copy_image.c helper_functions/mlx_shrink_image.c \
-	helper_functions/ft_open.c helper_functions/ft_lstremove.c helper_functions/ft_strjoin.c
+	helper_functions/ft_lstnew_img.c helper_functions/ft_strjoin.c\
+	helper_functions/ft_memset.c helper_functions/ft_split.c \
+	helper_functions/ft_strchr.c helper_functions/ft_strdup.c \
+	helper_functions/ft_strlen.c helper_functions/ft_strlcat.c \
+	helper_functions/ft_strncmp.c helper_functions/ft_strnstr.c \
+	helper_functions/ft_strrchr.c helper_functions/blend_colors.c \
+	helper_functions/create_image.c helper_functions/mlx_get_pixel_color.c \
+	helper_functions/mlx_put_pixel.c helper_functions/mlx_copy_image.c \
+	helper_functions/mlx_shrink_image.c helper_functions/ft_open.c \
+	helper_functions/ft_lstremove.c
 
 PARSING = parsing/check_ext_isvalid.c parsing/check_map.c \
 	parsing/check_map_component.c parsing/check_texture.c \
@@ -31,9 +32,11 @@ PARSING = parsing/check_ext_isvalid.c parsing/check_map.c \
 	parsing/parssing_geters.c parsing/remove_map_extra.c
 
 PLAYER = player/init_player.c player/is_wall.c \
-	player/key_handling.c player/player_movement.c
+	player/key_handling.c player/player_movement.c \
+	player/rotations_functions.c mouse_move.c
 
-RAY_CASTING = ray_casting/cast_ray.c ray_casting/ray_info.c
+RAY_CASTING = ray_casting/cast_ray.c ray_casting/ray_info.c \
+	ray_casting/vertical_intersection.c ray_casting/horizontal_intersection.c
 
 RENDER3D_MAP = render3d_map/create_imgs_tools.c render3d_map/render.c \
 	render3d_map/render_tools.c render3d_map/texture.c

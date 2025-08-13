@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 14:36:21 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/09 14:36:37 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/13 16:58:13 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,7 @@ void	get_player_direction(void)
 void	init_player(void)
 {
 	v_player()->p_x = get_map_info()->player_x * TILESIZE + TILESIZE / 2;
-    v_player()->p_y = get_map_info()->player_y * TILESIZE + TILESIZE / 2;
-    // printf ("----------------------%c---------------------\n", get_final_map(0, 0)[get_map_info()->player_y][get_map_info()->player_x]);
-    v_player()->direction = get_map_info()->direction;
+	v_player()->p_y = get_map_info()->player_y * TILESIZE + TILESIZE / 2;
+	v_player()->direction = get_map_info()->direction;
 	get_player_direction();
 }

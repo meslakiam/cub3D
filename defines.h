@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:31:03 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/12 17:25:31 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/13 16:48:47 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@
 # include <unistd.h>
 # include <sys/time.h>
 # include <stdbool.h> 
-# include <sys/time.h>
+# include <stdint.h>
+# include <fcntl.h>
+# include <sys/types.h>
 
 # ifndef M_PI
 #  define M_PI 3.14159265358979323846

@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 03:25:53 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/12 17:48:29 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/13 19:21:03 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,15 +66,18 @@ typedef struct s_global
 {
 	void	*mlx;
 	void	*mlx_win;
-	int		mouse_move;
+	t_data	*win_img;
+	t_data	*map_img;
+}			t_global;
+
+typedef struct s_mouse {
+    int		mouse_move;
 	int		mouse_direction;
 	int 	save_mouse_status;
 	int 	save_mouse_event_status;
 	long 	last_update_time;
 	int		check_mouse_sides;
-	t_data	*win_img;
-	t_data	*map_img;
-}			t_global;
+}           t_mouse;
 
 typedef enum e_texture
 {
@@ -105,13 +108,13 @@ size_t					ft_strlcat(char *dst, const char *src, size_t dstsize);
 t_map					*ft_lstnew(void *content);
 t_img					*ft_lstnew_img(char *content);
 t_global  				*v_global(void);
+t_mouse   				*v_mouse(void);
 int						my_mlx_get_pixel_color(t_data *data, int x, int y);
 void					my_mlx_pixel_put(t_data *data, int x, int y, int color);
 t_data					*mlx_shrink_img(t_data *src, int width, int height);
 t_data_list				*mlx_copy_img(t_data *src, int width, int height);
 unsigned int			blend_colors(unsigned int bg, unsigned int fg, float alpha);
 void					ft_lstadd_back_rays(t_rays_data **lst, t_rays_data *new);
-t_rays_data             *ft_lstnew_ray(int r_dis, int ray_ang, double end_x_y);
 t_data_list				*create_image(t_img	*path_lst, int width, int height);
 
 #endif

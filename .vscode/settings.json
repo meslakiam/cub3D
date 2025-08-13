@@ -17,6 +17,9 @@
         "ray_casting.h": "c",
         "limits": "c",
         "type_traits": "c",
-        "utility": "c"
+        "utility": "c",
+        "map.h": "c",
+        "render.h": "c",
+        "math.h": "c"
     }
 }

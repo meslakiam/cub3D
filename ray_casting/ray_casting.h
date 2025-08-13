@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 15:00:21 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/12 16:30:57 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/13 16:55:51 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ typedef struct s_ray_info
 
 t_ray_info	get_ray_info(void);
 t_ray_data	cast_ray(t_point start_pos, double angle, double step_speed);
-void		ray_casting(double angle);
 void		ray_casting_update_p(double angle);
+t_ray_data	find_horizontal_intersection(t_point start_pos, double radian,
+				double step_speed);
+t_ray_data	find_vertical_intersection(t_point start_pos, double radian,
+				double step_speed);
 
 #endif

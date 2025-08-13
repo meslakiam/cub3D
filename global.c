@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:49:00 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/07/19 19:23:14 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/13 16:37:41 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,4 +37,11 @@ t_global   *v_global(void)
     static t_global   data;
 
     return &data;
+}
+
+t_mouse   *v_mouse(void)
+{
+    static t_mouse   mouse;
+
+    return &mouse;
 }
