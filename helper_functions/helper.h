@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 03:25:53 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/13 19:21:03 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/14 17:13:41 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,12 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+
+typedef struct s_point
+{
+	double	x;
+	double	y;
+}			t_point;
 
 typedef struct s_map
 {
@@ -71,12 +77,9 @@ typedef struct s_global
 }			t_global;
 
 typedef struct s_mouse {
-    int		mouse_move;
-	int		mouse_direction;
-	int 	save_mouse_status;
-	int 	save_mouse_event_status;
-	long 	last_update_time;
-	int		check_mouse_sides;
+    double		mouse_speed_anlge;
+	int			mouse_direction;
+	t_point		mouse_pos;
 }           t_mouse;
 
 typedef enum e_texture

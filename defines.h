@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:31:03 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/13 16:48:47 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/14 19:35:28 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@
 # define window_height      1080
 # define window_width       1920
 
-# define MOUSE_ROTATION_SPEED 3.2
-# define ROTATION_SPEED 	5
+# define MOUSE_ROTATION_SPEED(a) (a / 10)
+# define ROTATION_SPEED 	15
 # define PLAYER_SPEED 		2
 
 

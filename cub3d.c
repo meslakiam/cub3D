@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:23:56 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/13 17:46:19 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/14 19:34:54 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,13 @@ void	cast_rays_and_render_game(void)
 int	create_game(void)
 {
 	// frames();
-	mouse_check();
+	// mouse_check();
+	mouse_move();
 	render_floor_and_sky();
 	move_the_player();
 	cast_rays_and_render_game();
 	draw_mini_map();
+
 	return (0);
 }
 
@@ -81,13 +83,11 @@ int	main(int argc, char *argv[])
 	else
 	{
 		check_map(argv[1]);
-		v_mouse()->mouse_move = 0;
-		v_mouse()->save_mouse_status = 0;
-		v_mouse()->check_mouse_sides = 0;
 		fill_data();
 		init_player();
+
+		mlx_mouse_move(v_global()->mlx, v_global()->mlx_win, window_width / 2, window_height / 2);
 		mlx_mouse_hide(v_global()->mlx, v_global()->mlx_win);
-		mlx_hook(v_global()->mlx_win, 6, 1L << 6, mouse_move, NULL);
 		mlx_hook(v_global()->mlx_win, 2, 1L << 0, key_press, NULL);
 		mlx_hook(v_global()->mlx_win, 3, 1L << 1, key_release, NULL);
 		mlx_loop_hook(v_global()->mlx, create_game, NULL);
