@@ -6,18 +6,11 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:49:00 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/13 16:37:41 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/10 18:36:51 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
-
-// t_map   *v_map(void)
-// {
-//     static t_map   map;
-
-//     return &map;
-// }
 
 t_map_data *get_map_info(void)
 {
@@ -41,7 +34,7 @@ t_global   *v_global(void)
 
 t_mouse   *v_mouse(void)
 {
-    static t_mouse   mouse;
+    static t_mouse    mouse;
 
     return &mouse;
 }

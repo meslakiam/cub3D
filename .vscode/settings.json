@@ -20,6 +20,8 @@
         "utility": "c",
         "map.h": "c",
         "render.h": "c",
-        "math.h": "c"
+        "math.h": "c",
+        "cmath": "c",
+        "parsing.h": "c"
     }
 }

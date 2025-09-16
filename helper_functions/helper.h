@@ -6,15 +6,13 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 03:25:53 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/14 17:13:41 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/10 18:11:48 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HELPER_H
 # define HELPER_H
 
-# include "../garbage_collector/garbage_collector.h"
-# include "math.h"
 # include <fcntl.h>
 # include <stdint.h>
 # include <stdio.h>
@@ -22,6 +20,8 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
+# include <math.h>
+# include "../garbage_collector/garbage_collector.h"
 
 typedef struct s_point
 {
@@ -76,10 +76,12 @@ typedef struct s_global
 	t_data	*map_img;
 }			t_global;
 
-typedef struct s_mouse {
+typedef struct s_mouse
+{
     double		mouse_speed_anlge;
 	int			mouse_direction;
 	t_point		mouse_pos;
+	int			use_mouse;
 }           t_mouse;
 
 typedef enum e_texture
@@ -87,7 +89,8 @@ typedef enum e_texture
 	TEX_WEST = 1,
 	TEX_EAST = 2,
 	TEX_NORTH = 3,
-	TEX_SOUTH = 4
+	TEX_SOUTH = 4,
+	TEX_DOOR = 5
 } e_tex;
 
 char					*ft_strchr(const char *s, int c);

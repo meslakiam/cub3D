@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 12:10:37 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/08 21:27:03 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/16 19:22:04 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int check_component()
         j = 0;
         while (map[i][j])
         {
-            if (!ft_strchr(" 01NSEW", map[i][j]))
+            if (!ft_strchr(" 01NSEWD", map[i][j]))
                 return (0);
             if (ft_strchr("NSEW", map[i][j]))
                 repeated++;
@@ -114,17 +114,17 @@ void flood_fill(char **map, int x, int y)
         return;
     else if (map[y][x] == ' ' && (map[y][x - 1] != '0' && map[y][x + 1] != '0' && map[y - 1][x] != '0' && map[y + 1][x] != '0'))
         return;
-    else if (map[y][x] == '0' && (map[y][x - 1] == '*' || map[y][x + 1] == '*'))
+    else if (map[y][x] == '0' && map[y][x] == 'D' && (map[y][x - 1] == '*' || map[y][x + 1] == '*'))
     {
         write(2, "Error\n ---> The Map Not Closed\n",31);
         ft_exit(255);
     }
-    else if (map[y][x] == '0' &&  (map[y - 1][x] == '*' || map[y + 1][x] == '*'))
+    else if (map[y][x] == '0' && map[y][x] == 'D' &&  (map[y - 1][x] == '*' || map[y + 1][x] == '*'))
     {
         write(2, "Error\n ---> The Map Not Closed\n",31);
         ft_exit(255);
     }
-    else if (ft_strchr("NEWS", map[y][x]) || map[y][x] == '0')
+    else if (ft_strchr("NEWSD", map[y][x]) || map[y][x] == '0')
 		map[y][x] = '2';
     else if (map[y][x] == '1')
 		map[y][x] = '2';

@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:56:40 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/14 17:04:18 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/17 16:32:21 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,7 @@ int			is_wall(int map_x, int map_y);
 double		distance(double x1, double y1, double x2, double y2);
 double		distance_from_player(double x2, double y2);
 
+int			destroy_window(void	*param);
 int			key_press(int keycode);
 int			key_release(int keycode);
 

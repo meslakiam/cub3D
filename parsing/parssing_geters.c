@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parssing_geters.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 06:07:03 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/07/24 19:12:45 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/16 17:33:46 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ t_map **get_map()
 
 int *get_all_filled()
 {
-    static int is_filled[6];
+    static int is_filled[7];
     return(is_filled);
 }
 

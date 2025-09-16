@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:02:21 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/14 17:45:54 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/16 19:18:12 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ void	update_player_position(double x1, double y1, double angle)
 	if (dist > PLAYER_SPEED)
 		dist = PLAYER_SPEED;
 	if (!check_wall_x(v_player()->save_x, v_player()->save_y, angle, dist))
-		v_player()->save_x += (dist)*cos(radian);
+		v_player()->save_x += dist * cos(radian);
 	if (!check_wall_y(v_player()->save_x, (v_player()->save_y), angle, dist))
-		v_player()->save_y += (dist)*sin(radian);
+		v_player()->save_y += dist * sin(radian);
 }
 
 void	player_move_straight_walk(void)

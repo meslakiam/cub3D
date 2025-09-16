@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/08 23:08:49 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/13 16:55:56 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/16 15:37:34 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,9 +25,9 @@ t_ray_data	cast_ray(t_point start_pos, double angle, double step_speed)
 	horizontal_hit = find_horizontal_intersection(start_pos, radian,
 			step_speed);
 	dist_vert = distance_from_player(vertical_hit.hit_point.x,
-			vertical_hit.hit_point.y);
+										vertical_hit.hit_point.y);
 	dist_hor = distance_from_player(horizontal_hit.hit_point.x,
-			horizontal_hit.hit_point.y);
+									horizontal_hit.hit_point.y);
 	if (dist_vert < dist_hor)
 		return (vertical_hit);
 	else

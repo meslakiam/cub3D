@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/07 00:24:22 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/12 18:00:00 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/10 17:33:15 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,10 @@ int get_mini_map_color(double x, double y)
         return (WALL_COLOR);
     if (ft_strchr("0NSWE", map_cor))
         return (FLOOR_COLOR);
+    if(ft_strchr("D", map_cor))
+        return (CLOSE_DOOR_COLOR);
+    if(ft_strchr("O", map_cor))
+        return (OPEN_DOOR_COLOR);
     else
         return (0);
 }

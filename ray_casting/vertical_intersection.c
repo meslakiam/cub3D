@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 16:51:24 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/13 16:55:40 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/08/24 21:04:12 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ t_ray_data	get_vertical_x_intersection(t_point start_pos, double radian,
 
 	if (cos(radian) > 0)
 	{
-		vertical_hit.hit_point.x = floor(start_pos.x / TILESIZE) * TILESIZE
+	vertical_hit.hit_point.x = floor(start_pos.x / TILESIZE) * TILESIZE
 			+ TILESIZE;
 		vertical_hit.step_x = step_speed;
 	}

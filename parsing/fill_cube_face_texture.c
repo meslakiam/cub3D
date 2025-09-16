@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_cube_face_texture.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 22:16:08 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/07/10 06:58:49 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/09/16 15:45:49 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int check_is_in_cube_faces(char *face)
 
     i = 0;
     if (!faces)
-        faces = ft_split("NO SO WE EA F C", " ");
+        faces = ft_split("DOOR NO SO WE EA F C", " ");
     if (!face[0])
         return(1);
     while (face && faces && faces[i])
@@ -60,7 +60,9 @@ void fill_cube_faces(char **splited_line)
         write(2, "Error\n --> One Of Texture Line Has More Than Needed\n", 52);
         ft_exit(255);
     }
-    if (!ft_strncmp("NO", splited_line[0], 3))
+    if (!ft_strncmp("DOOR", splited_line[0], 5))
+        get_map_info()->door = splited_line[1];
+    else if (!ft_strncmp("NO", splited_line[0], 3))
         get_map_info()->no = splited_line[1];
     else if (!ft_strncmp("SO", splited_line[0], 3))
         get_map_info()->so = splited_line[1];

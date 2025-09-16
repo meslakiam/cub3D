@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:31:03 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/14 19:35:28 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/16 18:09:25 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,8 @@
 # define window_width       1920
 
 # define MOUSE_ROTATION_SPEED(a) (a / 10)
-# define ROTATION_SPEED 	15
-# define PLAYER_SPEED 		2
+# define ROTATION_SPEED 	4
+# define PLAYER_SPEED 		3
 
 
 # define FOV				75
@@ -50,9 +50,12 @@
 # define MINI_MAP_POS_X     50
 # define MINI_MAP_POS_Y     MINI_MAP_POS_X
 # define WALL_COLOR         0xAAAAAA
-# define DOOR_COLOR         0xFF0000
 # define FLOOR_COLOR        0x000FF0
+# define CLOSE_DOOR_COLOR   0x8B0000
+# define OPEN_DOOR_COLOR    0x228B22
 
+# define key_mouse_on_off   32
+# define key_door           101
 # define key_Esc 			65307
 # define key_up 			119
 # define key_down 			115

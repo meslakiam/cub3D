@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:23:56 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/14 19:34:54 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/16 17:40:34 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,12 +48,10 @@ void	cast_rays_and_render_game(void)
 	i = 0;
 	data = v_global();
 	ray = get_ray_info();
+	get_door_imgs(1);
 	while (i < ray.num_of_rays)
 	{
 		ray_casting_update_p(ray.ray_angle);
-		draw_line(round(v_player()->p_x), round(v_player()->p_y),
-				round(v_player()->end_p_x), round(v_player()->end_p_y),
-				0x00FF0000);
 		render(i, ray.ray_angle);
 		ray.ray_angle += (double)FOV / (double)ray.num_of_rays;
 		i++;
@@ -66,13 +64,11 @@ void	cast_rays_and_render_game(void)
 int	create_game(void)
 {
 	// frames();
-	// mouse_check();
 	mouse_move();
 	render_floor_and_sky();
 	move_the_player();
 	cast_rays_and_render_game();
 	draw_mini_map();
-
 	return (0);
 }
 
@@ -85,9 +81,11 @@ int	main(int argc, char *argv[])
 		check_map(argv[1]);
 		fill_data();
 		init_player();
-
-		mlx_mouse_move(v_global()->mlx, v_global()->mlx_win, window_width / 2, window_height / 2);
+		v_mouse()->use_mouse = 1;
+		mlx_mouse_move(v_global()->mlx, v_global()->mlx_win, window_width / 2,
+				window_height / 2);
 		mlx_mouse_hide(v_global()->mlx, v_global()->mlx_win);
+		mlx_hook(v_global()->mlx_win, 17, 0, destroy_window, NULL);
 		mlx_hook(v_global()->mlx_win, 2, 1L << 0, key_press, NULL);
 		mlx_hook(v_global()->mlx_win, 3, 1L << 1, key_release, NULL);
 		mlx_loop_hook(v_global()->mlx, create_game, NULL);

@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:50:28 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/12 10:42:27 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/16 18:43:27 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,9 +56,15 @@ void    draw_pixel_depend_distance(int y, int x, int color)
 int get_wall_texture()
 {
     int tex_id;
+    int row;
+    int col;
 
     tex_id = 0;
-    if (v_player()->was_hit_vertical)
+    row = v_player()->end_p_x / TILESIZE;
+    col = v_player()->end_p_y / TILESIZE;
+    if(get_final_map(0, 0)[col][row] == 'D')
+        tex_id = TEX_DOOR;
+    else if (v_player()->was_hit_vertical)
     {
         if (v_player()->end_p_x > v_player()->p_x)
             tex_id = TEX_WEST;
@@ -87,24 +93,6 @@ int get_wall_strip_hight(int r_angle)
     return wall_strip_hight;
 }
 
-t_data *get_animation_wall(int set, int wall_tex)
-{
-    
-    // static t_data *west_torch_wall;
-    // static t_data *east_torch_wall;
-
-    // if (set == 1)
-    // {
-    //     west_torch_wall = &get_west_torch_lst()->content;
-    //     east_torch_wall = &get_east_torch_lst()->content;
-    // }
-    // if (is_map_corners() == TEX_EAST)
-    //     return (east_torch_wall);
-    // else if (is_map_corners() == TEX_WEST)
-    //     return (west_torch_wall);
-    return (get_textures(wall_tex));
-}
-
 void render(int ray_index, double ray_angle)
 {
     int wall_strip_hight;
@@ -116,20 +104,19 @@ void render(int ray_index, double ray_angle)
     double  step;
     int color;
 
-    int corner = is_map_corners();
     wall_tex = get_wall_texture();
     wall_strip_hight = get_wall_strip_hight(ray_angle);
     start_y = (v_global()->win_img->img_height / 2)  - (wall_strip_hight / 2);
     end_y = start_y + wall_strip_hight;
-    img_start_h = get_tex_start(start_y, end_y, wall_tex, corner);
-    step = get_tex_step(wall_tex, corner,(end_y - start_y));
+    img_start_h = get_tex_start(start_y, end_y, wall_tex);
+    step = get_tex_step(wall_tex,(end_y - start_y));
     if (start_y < 0)
         start_y = 0;
     if (end_y > window_height)
         end_y = window_height;
     while (start_y < end_y)
     {
-        color = my_mlx_get_pixel_color(get_animation_wall(0, wall_tex), get_img_start_w(get_animation_wall(0, wall_tex)->img_width), img_start_h);
+        color = my_mlx_get_pixel_color(get_textures(wall_tex), get_img_start_w(get_textures(wall_tex)->img_width), img_start_h);
         draw_pixel_depend_distance(start_y, ray_index, color);
         img_start_h += step;
         start_y++;

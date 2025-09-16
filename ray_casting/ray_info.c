@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 14:59:51 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/08/14 17:03:54 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/16 16:11:22 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,5 @@ t_ray_info	get_ray_info(void)
 	half_fov = FOV / 2;
 	ray.ray_angle = player_angle - half_fov;
 	set_textures();
-	get_animation_wall(1, 0);
 	return (ray);
 }

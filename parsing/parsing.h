@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 19:12:16 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/07/24 19:12:18 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/08/16 17:09:00 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct s_map_data
     char    *so;
     char    *we;
     char    *ea;
+    char    *door;
     char    *floor_rgb;
     char    *cell_rgb;
     int     *f_rgb_tab;
