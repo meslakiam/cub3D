@@ -22,6 +22,7 @@
         "render.h": "c",
         "math.h": "c",
         "cmath": "c",
-        "parsing.h": "c"
+        "parsing.h": "c",
+        "cube3d_bonus.h": "c"
     }
 }
