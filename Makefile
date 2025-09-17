@@ -4,7 +4,7 @@ BONUS_NAME = cube3d_bonus
 
 CC = cc
 
-# CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror
 
 MLX_FLAGS = -lmlx -lX11 -lXext -lm -lz
 
@@ -36,6 +36,10 @@ PARSING = Mandatory/parsing/check_ext_isvalid.c Mandatory/parsing/check_map.c \
 	Mandatory/parsing/fill_cube_face_texture.c Mandatory/parsing/fill_map_infos.c \
 	Mandatory/parsing/parssing_geters.c Mandatory/parsing/remove_map_extra.c
 
+PARSING_BONUS = $(PARSING) Bonus/parsing_bonus/check_map_component_bonus.c Bonus/parsing_bonus/check_map_bonus.c \
+	Bonus/parsing_bonus/check_texture_bonus.c Bonus/parsing_bonus/fill_cube_face_texture_bonus.c \
+	Bonus/parsing_bonus/fill_map_infos_bonus.c
+
 PLAYER = Mandatory/player/init_player.c Mandatory/player/is_wall.c \
 	Mandatory/player/key_handling.c Mandatory/player/player_movement.c \
 	Mandatory/player/rotations_functions.c
@@ -58,7 +62,7 @@ GET_NEXT_LINE = Mandatory/get/get_next_line.c Mandatory/get/get_next_line_utils.
 SRC_MANDATORY = $(MANDATORY_MAIN) $(GARBAGE_COLLECTOR) $(HELPER_FUNCTIONS) $(PARSING) \
 	$(PLAYER) $(RAY_CASTING) $(RENDER3D_MAP) $(GET_NEXT_LINE)
 
-SRC_BONUS = $(BONUS_MAIN) $(GARBAGE_COLLECTOR) $(HELPER_FUNCTIONS) $(PARSING) $(RAY_CASTING) $(GET_NEXT_LINE) \
+SRC_BONUS = $(BONUS_MAIN) $(GARBAGE_COLLECTOR) $(HELPER_FUNCTIONS) $(PARSING_BONUS) $(RAY_CASTING) $(GET_NEXT_LINE) \
 	$(PLAYER_BONUS) $(RENDER3D_MAP_BONUS) 
 
 OBJ_MANDATORY = $(SRC_MANDATORY:.c=.o)

@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 06:08:57 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/09/16 15:47:47 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/17 22:13:54 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,6 @@ void check_faces_texture_file()
 {
     int fd;
 
-    fd = ft_open(get_map_info()->door, O_RDONLY, 0666);
-    close(fd);
     fd = ft_open(get_map_info()->no, O_RDONLY, 0666);
     close(fd);
     fd = ft_open(get_map_info()->so, O_RDONLY, 0666);
@@ -79,7 +77,7 @@ int *get_rgb_int_value(char **x_rgb)
     return (tab);
 }
 
-void check_floor_cell_rgb()
+void check_floor_cell_rgb(void)
 {
     char **c_rgb;
     char **f_rgb;

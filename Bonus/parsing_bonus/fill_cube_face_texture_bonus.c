@@ -6,33 +6,20 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 22:16:08 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/09/17 21:48:43 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/17 22:00:24 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "parsing.h"
+#include "../cube3d_bonus.h"
 
-int check_all_filled()
-{
-    int i;
-
-    i = 0;
-    while (i < 6)
-    {
-        if (!get_all_filled()[i])
-            return (0);
-        i++;
-    }
-    return (1);
-}
-int check_is_in_cube_faces(char *face)
+int check_is_in_cube_faces_bonus(char *face)
 {
     int i;
     static char **faces;
 
     i = 0;
     if (!faces)
-        faces = ft_split("NO SO WE EA F C", " ");
+        faces = ft_split("DOOR NO SO WE EA F C", " ");
     if (!face[0])
         return(1);
     while (face && faces && faces[i])
@@ -48,7 +35,7 @@ int check_is_in_cube_faces(char *face)
     
 }
 
-void fill_cube_faces(char **splited_line)
+void fill_cube_faces_bonus(char **splited_line)
 {
     int i;
 
@@ -60,7 +47,9 @@ void fill_cube_faces(char **splited_line)
         write(2, "Error\n --> One Of Texture Line Has More Than Needed\n", 52);
         ft_exit(255);
     }
-    if (!ft_strncmp("NO", splited_line[0], 3))
+    if (!ft_strncmp("DOOR", splited_line[0], 5))
+        get_map_info()->door = splited_line[1];
+    else if (!ft_strncmp("NO", splited_line[0], 3))
         get_map_info()->no = splited_line[1];
     else if (!ft_strncmp("SO", splited_line[0], 3))
         get_map_info()->so = splited_line[1];

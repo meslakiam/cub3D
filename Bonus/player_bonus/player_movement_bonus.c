@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:02:21 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/17 18:44:18 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/17 21:44:14 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@
 //     }
 // }
 
-void	update_player_position_bonus(double x1, double y1, double angle)
+void	update_player_position_bonus(double angle)
 {
 	t_ray_data	hit_wall;
 	t_point		player_pos;
@@ -73,10 +73,10 @@ void	player_move_straight_walk_bonus(void)
 		angle += 180;
 		if (angle > 360)
 			angle -= 360;
-		update_player_position_bonus(v_player()->p_x, v_player()->p_y, angle);
+		update_player_position_bonus(angle);
 	}
 	else
-		update_player_position_bonus(v_player()->p_x, v_player()->p_y, angle);
+		update_player_position_bonus(angle);
 }
 
 void	player_move_side_walk_bonus(void)
@@ -89,17 +89,14 @@ void	player_move_side_walk_bonus(void)
 		angle += 180;
 		if (angle > 360)
 			angle -= 360;
-		update_player_position_bonus(v_player()->p_x, v_player()->p_y, angle);
+		update_player_position_bonus(angle);
 	}
 	else
-		update_player_position_bonus(v_player()->p_x, v_player()->p_y, angle);
+		update_player_position_bonus(angle);
 }
 
 void	move_the_player_bonus(void)
 {
-	double	new_x;
-	double	new_y;
-
 	v_player()->save_x = v_player()->p_x;
 	v_player()->save_y = v_player()->p_y;
 	if (v_player()->turn_direction != 0)

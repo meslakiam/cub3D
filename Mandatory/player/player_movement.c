@@ -6,44 +6,13 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:02:21 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/17 18:14:50 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/17 21:41:33 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "player.h"
 
-// void frames()
-// {
-//     static struct timeval start;
-//     struct timeval now;
-//     static int count;
-//     long time;
-
-//     if (!count)
-//         gettimeofday(&start, NULL);
-
-//     if (print_time(start))
-//     {
-//         printf("%d frame/sec\n", count);
-//         count = 0;
-//     }
-//     else
-//     {
-//         gettimeofday(&now, NULL);
-//         int turn_time = 1000000/30;
-//         long time_paste = (now.tv_sec * 1000000 + now.tv_usec)
-//	- (start.tv_sec * 1000000 + start.tv_usec);
-//         long time_of_this_tour = (turn_time * (count + 1));
-//         time = time_of_this_tour - time_paste;
-//         if (time > 0 && time_paste)
-//         {
-//             usleep(time);
-//         }
-//         count++;
-//     }
-// }
-
-void	update_player_position(double x1, double y1, double angle)
+void	update_player_position(double angle)
 {
 	t_ray_data	hit_wall;
 	t_point		player_pos;
@@ -74,10 +43,10 @@ void	player_move_straight_walk(void)
 		angle += 180;
 		if (angle > 360)
 			angle -= 360;
-		update_player_position(v_player()->p_x, v_player()->p_y, angle);
+		update_player_position(angle);
 	}
 	else
-		update_player_position(v_player()->p_x, v_player()->p_y, angle);
+		update_player_position(angle);
 }
 
 void	player_move_side_walk(void)
@@ -90,17 +59,14 @@ void	player_move_side_walk(void)
 		angle += 180;
 		if (angle > 360)
 			angle -= 360;
-		update_player_position(v_player()->p_x, v_player()->p_y, angle);
+		update_player_position(angle);
 	}
 	else
-		update_player_position(v_player()->p_x, v_player()->p_y, angle);
+		update_player_position(angle);
 }
 
 void	move_the_player(void)
 {
-	double	new_x;
-	double	new_y;
-
 	v_player()->save_x = v_player()->p_x;
 	v_player()->save_y = v_player()->p_y;
 	if (v_player()->turn_direction != 0)

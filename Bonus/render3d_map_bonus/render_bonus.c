@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:50:28 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/09/17 21:10:38 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/17 21:44:24 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,6 @@ void render_bonus(int ray_index, double ray_angle)
     double  start_y;
     double  end_y;
     double  img_start_h;
-    double  img_end_h;
     int     wall_tex;
     double  step;
     int color;

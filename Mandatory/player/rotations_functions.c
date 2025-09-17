@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/13 16:44:07 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/08 19:04:29 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/17 21:41:42 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,6 @@ void	rotate_player(void)
 
 void	mouse_rotation(void)
 {
-	double mouse_speed;
-
 	v_player()->rotation_angle += (double)v_mouse()->mouse_direction * v_mouse()->mouse_speed_anlge;
 	v_mouse()->mouse_speed_anlge = 0;
 	if (v_player()->rotation_angle > 360)

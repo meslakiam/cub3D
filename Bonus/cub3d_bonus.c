@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:23:56 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/17 20:55:52 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/17 22:03:04 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ int	main(int argc, char *argv[])
 		write(2, "Error\n ---> The Map Args Not Valid\n", 35);
 	else
 	{
-		check_map(argv[1]);
+		check_map_bonus(argv[1]);
 		fill_data();
 		init_player();
 		v_mouse()->use_mouse = 1;

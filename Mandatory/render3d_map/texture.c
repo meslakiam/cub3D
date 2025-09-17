@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 04:18:45 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/09/17 18:18:26 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/17 21:42:46 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ double	get_tex_step(int texture, int ligne_h)
 	int		image_hight;
 	double	step;
 
+	image_hight = 0;
+	step = 0;
 	if (texture == TEX_EAST)
 		image_hight = get_textures(TEX_EAST)->img_height;
 	else if (texture == TEX_WEST)

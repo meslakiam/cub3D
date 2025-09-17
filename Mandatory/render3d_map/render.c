@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 22:50:28 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/09/17 18:15:20 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/17 21:41:55 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,6 @@ void    draw_pixel_depend_distance(int y, int x, int color)
 {
     t_data  *data;
     char *tmp;
-    char *ch;
     double dis;
     double dis_max;
     double opacity;
@@ -93,7 +92,6 @@ void render(int ray_index, double ray_angle)
     double  start_y;
     double  end_y;
     double  img_start_h;
-    double  img_end_h;
     int     wall_tex;
     double  step;
     int color;

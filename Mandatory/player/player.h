@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:56:40 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/17 20:35:58 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/17 21:38:25 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,9 @@ double		distance_from_player(double x2, double y2);
 
 int			destroy_window(void	*param);
 int			key_press(int keycode);
-int			key_press_bonus(int keycode);
 int			key_release(int keycode);
 
 void		move_the_player(void);
-void		move_the_player_bonus(void);
 void		rotate_player(void);
 void		mouse_rotation(void);
 bool		is_player(char c);

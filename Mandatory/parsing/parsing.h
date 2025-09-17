@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 19:12:16 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/16 17:09:00 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/17 22:21:33 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,8 @@ int         check_closed_wall();
 void        check_texture();
 void        fill_map_infos(char *filename);
 void        check_map(char *filename);
+void        check_floor_cell_rgb(void);
+void        fill_map(char *str, int fd);
+void        get_player_pos(char **map_c);
 
 #endif

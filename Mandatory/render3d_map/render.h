@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/24 19:24:32 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/09/17 21:05:38 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/17 21:36:49 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,14 +18,10 @@
 
 void		render_floor_and_sky();
 void		render(int ray_index, double ray_angle);
-void		render_bonus(int ray_index, double ray_angle);
 void		set_textures(void);
-void		set_textures_bonus(void);
 
 t_data		*get_textures(int texture);
-t_data		*get_textures_bonus(int texture);
 double      get_tex_step(int texture, int ligne_h);
-double      get_tex_step_bonus(int texture, int ligne_h);
 double      get_tex_start(int start_y, int end_y, int texture);
 double      get_tex_end(int start_y, int end_y, int texture);
 double		get_img_start_w(int img_w);
