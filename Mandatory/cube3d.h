@@ -20,7 +20,6 @@
 # include "ray_casting/ray_casting.h"
 # include "render3d_map/render.h"
 
-
 t_map_data	*get_map_info(void);
 void		fill_data(void);
 void		move_the_player(void);

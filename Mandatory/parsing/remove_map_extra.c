@@ -6,7 +6,7 @@
 /*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 03:20:01 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/07/20 20:13:27 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/09/25 16:50:04 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,10 +114,7 @@ void remove_extra_from_map()
 	while (is_newline(map->map_line))
 	{
 		prev = map->prev;
-		// if (is_newline(map->map_line))
-		// {
-			ft_lstremove(get_map(), map);
-		// }
+		ft_lstremove(get_map(), map);
 		map = prev;
 	}
 	get_final_map(1, copy_map_in_tab());

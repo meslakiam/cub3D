@@ -3,162 +3,125 @@
 /*                                                        :::      ::::::::   */
 /*   check_map_component.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 12:10:37 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/09/17 21:51:00 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/25 01:00:27 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int check_component()
+int	check_component(void)
 {
-    int i, (j), (repeated);
-    char **map;
+	char	**map;
 
-    i = 0;
-    repeated = 0;
-    map = get_final_map(0, 0);
-    while(map[i])
-    {
-        j = 0;
-        while (map[i][j])
-        {
-            if (!ft_strchr(" 01NSEW", map[i][j]))
-                return (0);
-            if (ft_strchr("NSEW", map[i][j]))
-                repeated++;
-            if (ft_strchr("NSEW", map[i][j]) && repeated > 1)
-                return (0);
-            j++;
-        }
-        i++;
-    }
-    if(repeated != 1)
-        return (0);
-    return (1);
-}
-
-void get_player_pos(char **map_c)
-{
-    int i, (j);
-    char **map;
-
-    i = 0;
-    j = 0;
-    map = map_c;
-    while(map[i])
-    {
-        j = 0;
-        while (map[i][j])
-        {
-            if (ft_strchr("SNEW", map[i][j]))
-            {
-                get_map_info()->player_x = j;
-                get_map_info()->player_y = i;
-                get_map_info()->direction = map[i][j];
-            }
-            j++;
-        }
-        i++;
-    }
-}
-
-char **flood_fill_map()
-{
-    char **map;
-    char **new_map;
-	int i, (y), (j), (h);
-	
-	map = get_final_map(0, 0);
+	int i, (j), (repeated);
 	i = 0;
-    y = 1;
-	new_map = ft_calloc(get_map_hight(1) + 3, sizeof(char *));
-    new_map[0] = ft_calloc(ft_strlen(map[0]) + 3, sizeof(char));
-    ft_memset(new_map[0], '*', ft_strlen(map[0]) + 2);
-    new_map[get_map_hight(0) + 1] = ft_calloc(ft_strlen(map[get_map_hight(0) - 1]) + 3, sizeof(char));
-    ft_memset(new_map[get_map_hight(0) + 1], '*', ft_strlen(map[get_map_hight(0) - 1]) + 2);
+	repeated = 0;
+	map = get_final_map(0, 0);
 	while (map[i])
 	{
-		new_map[y] = ft_calloc(ft_strlen(map[i]) + 3, sizeof(char));
 		j = 0;
-        h = 0;
-        new_map[y][j] = '*';
-        j++;
-		while(map[i][h])
+		while (map[i][j])
 		{
-			if (ft_strchr("01NSEW ", map[i][h]))
-				new_map[y][j] = map[i][h];
-            else
-                new_map[y][j] = '*';
+			if (!ft_strchr(" 01NSEW", map[i][j]))
+				return (0);
+			if (ft_strchr("NSEW", map[i][j]))
+				repeated++;
+			if (ft_strchr("NSEW", map[i][j]) && repeated > 1)
+				return (0);
 			j++;
-            h++;
 		}
-        new_map[y][j] = '*';
 		i++;
-        y++;
+	}
+	if (repeated != 1)
+		return (0);
+	return (1);
+}
+
+void	fill_new_map(char **new_map, char **map, int i, int y)
+{
+	int	j;
+	int	h;
+
+	j = 0;
+	h = 0;
+	new_map[y][j++] = '*';
+	while (map[i][h])
+	{
+		new_map[y][j] = map[i][h];
+		j++;
+		h++;
+	}
+	while (j < get_map_info()->win_w)
+		new_map[y][j++] = '*';
+	new_map[y][j] = '*';
+}
+
+char	**flood_fill_map(void)
+{
+	char	**map;
+	char	**new_map;
+
+	int i, (y);
+	map = get_final_map(0, 0);
+	i = 0;
+	y = 1;
+	new_map = ft_calloc(get_map_hight(1) + 3, sizeof(char *));
+	new_map[0] = ft_calloc(ft_strlen(map[0]) + 3, sizeof(char));
+	ft_memset(new_map[0], '*', ft_strlen(map[0]) + 2);
+	new_map[get_map_hight(0) + 1] = ft_calloc(ft_strlen(map[get_map_hight(0)
+				- 1]) + 3, sizeof(char));
+	ft_memset(new_map[get_map_hight(0) + 1], '*', ft_strlen(map[get_map_hight(0)
+			- 1]) + 2);
+	while (map[i])
+	{
+		new_map[y] = ft_calloc(get_map_info()->win_w + 3, sizeof(char));
+		fill_new_map(new_map, map, i, y);
+		i++;
+		y++;
 	}
 	return (new_map);
 }
 
-void flood_fill(char **map, int x, int y)
+void	flood_fill(char **map, int x, int y)
 {
-    int len1 = ft_strlen(map[y]);
-    int len2 = get_map_hight(0) + 2;
-	if (x < 0 || y < 0 || x >=  len1 || y >= len2)
+	if (x < 0 || y < 0 || x >= ft_strlen(map[y]) || y >= get_map_hight(0) + 2)
 		return ;
-    if (map[y][x] == '2')
-        return;
-    else if (map[y][x] == '*')
-        return;
-    else if (map[y][x] == ' ' && (map[y][x - 1] != '0' && map[y][x + 1] != '0' && map[y - 1][x] != '0' && map[y + 1][x] != '0'))
-        return;
-    else if (map[y][x] == '0' && (map[y][x - 1] == '*' || map[y][x + 1] == '*'))
-    {
-        write(2, "Error\n ---> The Map Not Closed\n",31);
-        ft_exit(255);
-    }
-    else if (map[y][x] == '0' && (map[y - 1][x] == '*' || map[y + 1][x] == '*'))
-    {
-        write(2, "Error\n ---> The Map Not Closed\n",31);
-        ft_exit(255);
-    }
-    else if (ft_strchr("NEWS", map[y][x]) || map[y][x] == '0')
+	if (map[y][x] == '2')
+		return ;
+	else if (map[y][x] == '*')
+		return ;
+	else if (map[y][x] == ' ' && (map[y][x - 1] != '0' && map[y][x + 1] != '0'
+			&& map[y - 1][x] != '0' && map[y + 1][x] != '0'))
+		return ;
+	else if ((map[y][x] == '0' || ft_strchr("NEWS", map[y][x])) && (!\
+		ft_strchr("012", map[y][x - 1]) || !ft_strchr("012", map[y][x + 1])))
+		print_not_closed_map();
+	else if ((map[y][x] == '0' || ft_strchr("NEWS", map[y][x])) && (!\
+		ft_strchr("012", map[y - 1][x]) || !ft_strchr("012", map[y + 1][x])))
+		print_not_closed_map();
+	else if (ft_strchr("NEWS", map[y][x]) || map[y][x] == '0')
 		map[y][x] = '2';
-    else if (map[y][x] == '1')
+	else if (map[y][x] == '1')
 		map[y][x] = '2';
-    else
-    {
-        write(2, "Error\n ---> The Map Not Closed\n",31);
-        ft_exit(255);
-    }
+	else
+		print_not_closed_map();
 	flood_fill(map, x + 1, y);
 	flood_fill(map, x - 1, y);
 	flood_fill(map, x, y + 1);
 	flood_fill(map, x, y - 1);
 }
 
-int check_closed_wall()
+int	check_closed_wall(void)
 {
-    char **map;
+	char	**map;
 
-    map = flood_fill_map();
-    int i = 0;
-    while (map[i])
-    {
-       printf("|%s|\n",map[i]);
-       i++;
-    }
-    get_player_pos(map);
-    flood_fill(map, get_map_info()->player_x, get_map_info()->player_y);
-    get_map_info()->player_x -= 1;
-    get_map_info()->player_y -= 1;
-     i = 0;
-    while (map[i])
-    {
-       printf("|%s|\n",map[i]);
-       i++;
-    }
-    return(1);
+	map = flood_fill_map();
+	get_player_pos(map);
+	flood_fill(map, get_map_info()->player_x, get_map_info()->player_y);
+	get_map_info()->player_x -= 1;
+	get_map_info()->player_y -= 1;
+	return (1);
 }

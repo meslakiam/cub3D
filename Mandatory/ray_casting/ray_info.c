@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 14:59:51 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/17 19:28:47 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/25 01:26:12 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_ray_info	get_ray_info(void)
 	double		player_angle;
 	double		half_fov;
 
-	ray.num_of_rays = window_width;
+	ray.num_of_rays = WINDOW_WIDTH;
 	player_angle = v_player()->rotation_angle;
 	half_fov = FOV / 2;
 	ray.ray_angle = player_angle - half_fov;

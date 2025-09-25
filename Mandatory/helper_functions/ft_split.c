@@ -21,8 +21,8 @@ int	countword(char *str, char *sep)
 	countw = 0;
 	while (str && str[i])
 	{
-		if ((!ft_strchr(sep, str[i]) && ft_strchr(sep, str[i + 1])) || \
-			(!ft_strchr(sep, str[i]) && str[i + 1] == '\0'))
+		if ((!ft_strchr(sep, str[i]) && ft_strchr(sep, str[i + 1]))
+			|| (!ft_strchr(sep, str[i]) && str[i + 1] == '\0'))
 			countw++;
 		i++;
 	}

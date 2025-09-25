@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   key_handling_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:56:01 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/17 20:57:52 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/25 01:31:08 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,38 +79,51 @@ void	door_and_mouse_key_press(int keycode)
 
 	x = v_player()->p_x / TILESIZE;
 	y = v_player()->p_y / TILESIZE;
-	if(keycode == key_door)
+	if(keycode == KEY_DOOR)
 	{
 		if(is_closed_door())
 			;
 		else if (is_open_door())
 			;
 	}
-	if(keycode == key_mouse_on_off && v_mouse()->use_mouse)
+	if(keycode == KEY_MOUSE_ON_OFF && v_mouse()->use_mouse)
 		v_mouse()->use_mouse = 0;
-	else if(keycode == key_mouse_on_off && !v_mouse()->use_mouse)
+	else if(keycode == KEY_MOUSE_ON_OFF && !v_mouse()->use_mouse)
 	{
-		mlx_mouse_move(v_global()->mlx, v_global()->mlx_win, window_width / 2,
-				window_height / 2);
+		mlx_mouse_move(v_global()->mlx, v_global()->mlx_win, WINDOW_WIDTH / 2,
+				WINDOW_HEIGHT / 2);
 		v_mouse()->use_mouse = 1;
 	}
 }
 
+
+int mouse_hook(int button, int x, int y, void *param)
+{
+	(void)x;
+	(void)y;
+	(void)param;
+    if (button == MOUSE_LEFT_KEY)
+    {
+		v_player()->fire = 1;
+    }
+    return (0);
+}
+
 int	key_press_bonus(int keycode)
 {
-	if (keycode == key_Esc)
+	if (keycode == KEY_ESC)
 		ft_exit(0);
-	if (keycode == key_rotate_right)
+	if (keycode == KEY_ROTATE_RIGHT)
 		v_player()->turn_direction = 1;
-	if (keycode == key_rotate_left)
+	if (keycode == KEY_ROTATE_LEFT)
 		v_player()->turn_direction = -1;
-	if (keycode == key_up)
+	if (keycode == KEY_UP)
 		v_player()->walk_direction = 1;
-	if (keycode == key_down)
+	if (keycode == KEY_DOWN)
 		v_player()->walk_direction = -1;
-	if (keycode == key_right)
+	if (keycode == KEY_RIGHT)
 		v_player()->side_direction = 1;
-	if (keycode == key_left)
+	if (keycode == KEY_LEFT)
 		v_player()->side_direction = -1;
 	door_and_mouse_key_press(keycode);
 	return (0);

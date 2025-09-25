@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/24 07:06:45 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/07/19 18:33:51 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/18 17:00:44 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef GET_NEXT_LINE_H
 # define GET_NEXT_LINE_H
 
+# include "../garbage_collector/garbage_collector.h"
+# include "../helper_functions/helper.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <stdlib.h>
 # include <unistd.h>
-# include "../garbage_collector/garbage_collector.h"
-#include "../helper_functions/helper.h"
 
 # ifndef BUFFER_SIZE
-#  define BUFFER_SIZE 100
+#  define BUFFER_SIZE 1000
 # endif
 
 char	*get_next_line(int fd);

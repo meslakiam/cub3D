@@ -4,32 +4,31 @@ BONUS_NAME = cube3d_bonus
 
 CC = cc
 
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g3
 
 MLX_FLAGS = -lmlx -lX11 -lXext -lm -lz
 
 MANDATORY_MAIN = Mandatory/fill_data.c Mandatory/cub3d.c Mandatory/global.c
 
 BONUS_MAIN = Bonus/cub3d_bonus.c Mandatory/global.c Bonus/create_mini_map_bonus.c Bonus/mouse_move_bonus.c \
-	Bonus/draw_functions_bonus.c Mandatory/fill_data.c
+	Bonus/draw_functions_bonus.c Mandatory/fill_data.c 
 
 GARBAGE_COLLECTOR = Mandatory/garbage_collector/ft_calloc.c Mandatory/garbage_collector/ft_exit.c \
 	Mandatory/garbage_collector/ft_free.c Mandatory/garbage_collector/ft_save_mem.c \
 	Mandatory/garbage_collector/mem_list.c
 
 HELPER_FUNCTIONS = Mandatory/helper_functions/ft_atoi.c Mandatory/helper_functions/ft_lstadd_back.c \
-	Mandatory/helper_functions/ft_lstadd_back_imgs.c Mandatory/helper_functions/ft_lstadd_back_rays.c \
+	Mandatory/helper_functions/ft_lstadd_back_imgs.c Mandatory/helper_functions/ft_open.c \
 	Mandatory/helper_functions/ft_lstadd_img.c Mandatory/helper_functions/ft_lstnew.c \
 	Mandatory/helper_functions/ft_lstnew_img.c Mandatory/helper_functions/ft_strjoin.c\
 	Mandatory/helper_functions/ft_memset.c Mandatory/helper_functions/ft_split.c \
 	Mandatory/helper_functions/ft_strchr.c Mandatory/helper_functions/ft_strdup.c \
-	Mandatory/helper_functions/ft_strlen.c Mandatory/helper_functions/ft_strlcat.c \
-	Mandatory/helper_functions/ft_strncmp.c Mandatory/helper_functions/ft_strnstr.c \
+	Mandatory/helper_functions/ft_strlen.c \
+	Mandatory/helper_functions/ft_strncmp.c Mandatory/parsing/check_map_component_tools.c \
 	Mandatory/helper_functions/ft_strrchr.c Mandatory/helper_functions/blend_colors.c \
 	Mandatory/helper_functions/create_image.c Mandatory/helper_functions/mlx_get_pixel_color.c \
-	Mandatory/helper_functions/mlx_put_pixel.c Mandatory/helper_functions/mlx_copy_image.c \
-	Mandatory/helper_functions/mlx_shrink_image.c Mandatory/helper_functions/ft_open.c \
-	Mandatory/helper_functions/ft_lstremove.c
+	Mandatory/helper_functions/mlx_put_pixel.c Mandatory/helper_functions/ft_lstremove.c \
+	
 
 PARSING = Mandatory/parsing/check_ext_isvalid.c Mandatory/parsing/check_map.c \
 	Mandatory/parsing/check_map_component.c Mandatory/parsing/check_texture.c \
@@ -53,7 +52,8 @@ RENDER3D_MAP = Mandatory/render3d_map/render.c Mandatory/render3d_map/render_too
 	Mandatory/render3d_map/texture.c
 
 RENDER3D_MAP_BONUS = $(RENDER3D_MAP) Bonus/render3d_map_bonus/create_imgs_tools_bonus.c Bonus/render3d_map_bonus/render_bonus.c \
-	Bonus/render3d_map_bonus/texture_bonus.c
+	Bonus/render3d_map_bonus/texture_bonus.c Bonus/render3d_map_bonus/animation_bonus/create_animation_imgs.c \
+	Bonus/render3d_map_bonus/animation_bonus/draw_animation.c Bonus/render3d_map_bonus/animation_bonus/get_player_animation.c
 
 
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_imgs_tools_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 17:29:44 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/09/17 21:04:29 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/24 00:19:47 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,15 +84,3 @@ t_data_list	*get_door_imgs(int flag)
 		door_lst = door_lst->next;
 	return(door_lst);
 }
-
-
-// int get_new_win_flag(int set)
-// {
-// 	static int new_win_flag;
-
-// 	if (set == 1)
-// 		new_win_flag = 1;
-// 	else if (set == 2)
-// 		new_win_flag = 0;
-// 	return (new_win_flag);
-// }

@@ -11,6 +11,7 @@
                 "${workspaceFolder}/Mandatory/*.c",
                 "${workspaceFolder}/Mandatory/*/*.c",
                 "${workspaceFolder}/Bonus/*/*.c",
+                "${workspaceFolder}/Bonus/*/*/*.c",
                 "-L/usr/local/lib",
                 "-I${workspaceFolder}/*",
                 "-lmlx",

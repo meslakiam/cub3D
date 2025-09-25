@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   player.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:56:40 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/17 21:38:25 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/23 23:08:29 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ typedef struct s_player
 	double	walk_direction;
 	double	turn_direction;
 	double	side_direction;
+	int		fire;
 	double	save_x;
 	double	save_y;
 	double	p_x;
@@ -44,7 +45,7 @@ int			is_wall(int map_x, int map_y);
 double		distance(double x1, double y1, double x2, double y2);
 double		distance_from_player(double x2, double y2);
 
-int			destroy_window(void	*param);
+int			destroy_window(void *param);
 int			key_press(int keycode);
 int			key_release(int keycode);
 

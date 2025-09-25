@@ -3,31 +3,31 @@
 /*                                                        :::      ::::::::   */
 /*   helper.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 03:25:53 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/09/10 18:11:48 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/25 16:47:10 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef HELPER_H
 # define HELPER_H
 
+# include "../garbage_collector/garbage_collector.h"
 # include <fcntl.h>
+# include <math.h>
+# include <mlx.h>
 # include <stdint.h>
 # include <stdio.h>
-# include <mlx.h>
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include <math.h>
-# include "../garbage_collector/garbage_collector.h"
 
 typedef struct s_point
 {
-	double	x;
-	double	y;
-}			t_point;
+	double				x;
+	double				y;
+}						t_point;
 
 typedef struct s_map
 {
@@ -38,11 +38,11 @@ typedef struct s_map
 
 typedef struct s_rays_data
 {
-	int ray_distance;
-	int ray_angle;
-    double end_x_y;
-	struct s_rays_data *next;
-} t_rays_data;
+	int					ray_distance;
+	int					ray_angle;
+	double				end_x_y;
+	struct s_rays_data	*next;
+}						t_rays_data;
 
 typedef struct t_img
 {
@@ -70,19 +70,18 @@ typedef struct s_data_list
 
 typedef struct s_global
 {
-	void	*mlx;
-	void	*mlx_win;
-	t_data	*win_img;
-	t_data	*map_img;
-}			t_global;
+	void				*mlx;
+	void				*mlx_win;
+	t_data				*win_img;
+}						t_global;
 
 typedef struct s_mouse
 {
-    double		mouse_speed_anlge;
-	int			mouse_direction;
-	t_point		mouse_pos;
-	int			use_mouse;
-}           t_mouse;
+	double				mouse_speed_anlge;
+	int					mouse_direction;
+	t_point				mouse_pos;
+	int					use_mouse;
+}						t_mouse;
 
 typedef enum e_texture
 {
@@ -91,7 +90,7 @@ typedef enum e_texture
 	TEX_NORTH = 3,
 	TEX_SOUTH = 4,
 	TEX_DOOR = 5
-} e_tex;
+}						t_tex;
 
 char					*ft_strchr(const char *s, int c);
 char					*ft_strdup(const char *s1);
@@ -99,7 +98,6 @@ char					*ft_strldup(const char *s1, size_t len);
 char					*ft_strjoin(const char *s1, const char *s2);
 char					**ft_split(char const *s, char *c);
 char					*ft_strrchr(char *s, int c);
-char					*ft_strnstr(char *haystack, char *needle, int len);
 int						ft_strlen(const char *s);
 int						ft_strslen(char **strs);
 int						ft_atoi(const char *str);
@@ -109,18 +107,16 @@ void					ft_lstadd_back(t_map **lst, t_map *new);
 void					ft_lstremove(t_map **map, t_map *node);
 void					*ft_memset(void *b, int c, size_t len);
 void					ft_lstadd_img(t_img **lst, t_img *new);
-void					ft_lstadd_back_imgs(t_data_list **lst, t_data_list *new);
-size_t					ft_strlcat(char *dst, const char *src, size_t dstsize);
+void					ft_lstadd_back_imgs(t_data_list **lst,
+							t_data_list *new);
 t_map					*ft_lstnew(void *content);
 t_img					*ft_lstnew_img(char *content);
-t_global  				*v_global(void);
-t_mouse   				*v_mouse(void);
+t_global				*v_global(void);
+t_mouse					*v_mouse(void);
 int						my_mlx_get_pixel_color(t_data *data, int x, int y);
 void					my_mlx_pixel_put(t_data *data, int x, int y, int color);
-t_data					*mlx_shrink_img(t_data *src, int width, int height);
-t_data_list				*mlx_copy_img(t_data *src, int width, int height);
-unsigned int			blend_colors(unsigned int bg, unsigned int fg, float alpha);
-void					ft_lstadd_back_rays(t_rays_data **lst, t_rays_data *new);
-t_data_list				*create_image(t_img	*path_lst, int width, int height);
+unsigned int			blend_colors(unsigned int bg, unsigned int fg,
+							float alpha);
+t_data_list				*create_image(t_img *path_lst, int width, int height);
 
 #endif

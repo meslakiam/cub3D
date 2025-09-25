@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
+/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:23:56 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/17 21:21:58 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/25 16:53:20 by oel-bann         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@ void	cast_rays_and_render_game(void)
 {
 	t_ray_info	ray;
 	t_global	*data;
-	t_data		*shrinked_map;
 	int			i;
 
 	i = 0;
@@ -30,8 +29,6 @@ void	cast_rays_and_render_game(void)
 		ray.ray_angle += (double)FOV / (double)ray.num_of_rays;
 		i++;
 	}
-	shrinked_map = mlx_shrink_img(data->map_img, v_global()->map_img->img_width
-			/ 2, v_global()->map_img->img_height / 2);
 	mlx_put_image_to_window(data->mlx, data->mlx_win, data->win_img->img, 0, 0);
 }
 
@@ -52,8 +49,8 @@ int	main(int argc, char *argv[])
 		check_map(argv[1]);
 		fill_data();
 		init_player();
-		mlx_mouse_move(v_global()->mlx, v_global()->mlx_win, window_width / 2,
-				window_height / 2);
+		mlx_mouse_move(v_global()->mlx, v_global()->mlx_win, WINDOW_WIDTH / 2,
+				WINDOW_HEIGHT / 2);
 		mlx_mouse_hide(v_global()->mlx, v_global()->mlx_win);
 		mlx_hook(v_global()->mlx_win, 17, 0, destroy_window, NULL);
 		mlx_hook(v_global()->mlx_win, 2, 1L << 0, key_press, NULL);

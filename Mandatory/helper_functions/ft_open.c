@@ -19,13 +19,13 @@ int	ft_open(char *file_name, int flag, int perm)
 	fd = -1;
 	if (!file_name)
 	{
-        write(2, "Error:\n --> File can't open\n", 28);
+		write(2, "Error:\n --> File can't open\n", 28);
 		ft_exit(255);
 	}
 	fd = open(file_name, flag, perm);
 	if (fd == -1)
 	{
-        write(2, "Error:\n --> File can't open\n", 28);
+		write(2, "Error:\n --> File can't open\n", 28);
 		ft_exit(255);
 	}
 	return (fd);
