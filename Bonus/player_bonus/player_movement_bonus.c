@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 14:02:21 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/17 21:44:14 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:15:34 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ void	update_player_position_bonus(double angle)
 	player_pos.y = v_player()->p_y;
 	hit_wall = cast_ray(player_pos, angle, 1);
 	dist = distance_from_player(hit_wall.hit_point.x, hit_wall.hit_point.y);
-	radian = DEG_TO_RAD(angle);
+	radian = angle * M_PI / 180.0;
 	if (dist > PLAYER_SPEED)
 		dist = PLAYER_SPEED;
 	if (!check_wall_x(v_player()->save_x, v_player()->save_y, angle, dist))

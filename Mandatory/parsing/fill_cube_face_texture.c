@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_cube_face_texture.c                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/04 22:16:08 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/09/25 01:01:44 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/09/25 20:59:27 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ int	check_all_filled(void)
 	}
 	return (1);
 }
+
 int	check_is_in_cube_faces(char *face)
 {
 	int			i;

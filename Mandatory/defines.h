@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   defines.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 15:31:03 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/25 19:21:11 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/09/25 22:11:59 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,6 @@
 # define WINDOW_HEIGHT 1080
 # define WINDOW_WIDTH 1920
 
-# define MOUSE_ROTATION_SPEED(a) (a / 10)
 # define ROTATION_SPEED 4
 # define PLAYER_SPEED 3
 
@@ -40,12 +39,10 @@
 # define WALL_HIGHT 20
 # define PLAYER_RADIUS 2
 # define RADIUS 2
-# define DEG_TO_RAD(a) ((a)*M_PI / 180.0)
 
-# define MINI_MAP_MARGIN 50
+# define MINI_MAP_MAR 50
 # define MINI_MAP_W 200
 # define MINI_MAP_H MINI_MAP_W
-# define MINI_MAP_R MINI_MAP_W / 2
 # define MINI_MAP_POS_X 50
 # define MINI_MAP_POS_Y MINI_MAP_POS_X
 # define WALL_COLOR 0xAAAAAA

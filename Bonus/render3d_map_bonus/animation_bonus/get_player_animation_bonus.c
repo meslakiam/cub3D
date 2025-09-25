@@ -1,31 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   check_map_bonus.c                                  :+:      :+:    :+:   */
+/*   get_player_animation.c                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/07/10 06:50:09 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/09/25 21:27:32 by imeslaki         ###   ########.fr       */
+/*   Created: 2025/09/19 12:11:30 by oel-bann          #+#    #+#             */
+/*   Updated: 2025/09/25 21:42:24 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../cube3d_bonus.h"
+#include "../../cube3d_bonus.h"
 
-void	check_map_bonus(char *filename)
+int	check_is_running(void)
 {
-	if (!check_ext_isvalid(filename))
+	if (v_player()->walk_direction == 1)
+		return (1);
+	else
+		return (0);
+}
+
+t_data_list	*get_curr_player_animation(void)
+{
+	if (check_is_running())
+		return (get_run_imgs(1));
+	else
 	{
-		write(2, "Error\n --> Extention Not Valid\n", 31);
-		ft_exit(255);
+		if (v_player()->fire == 1)
+			return (get_fire_imgs(1));
+		return (get_static_pos());
 	}
-	fill_map_infos_bonus(filename);
-	check_texture_bonus();
-	if (!check_component_bonus())
-	{
-		write(2, "Error\n --> Component In Map Not Valid\n", 38);
-		ft_exit(255);
-	}
-	get_map_width();
-	check_closed_wall_bonus();
+	return (NULL);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_map_infos.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/05 04:54:04 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/09/25 16:49:33 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:00:14 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,8 +47,8 @@ void	fill_map_infos(char *filename)
 {
 	char	*str;
 	char	**splited_line;
+	int		fd;
 
-	int(fd) = 0;
 	fd = ft_open(filename, O_RDONLY, 0666);
 	str = get_next_line(fd);
 	while (str && !check_all_filled())

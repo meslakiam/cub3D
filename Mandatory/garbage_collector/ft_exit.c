@@ -6,12 +6,13 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/03/25 01:47:18 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/13 18:48:27 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:06:27 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "garbage_collector.h"
 #include "../helper_functions/helper.h"
+
 void	ft_exit(int status)
 {
 	ft_destory_all();

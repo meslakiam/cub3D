@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   texture_bonus.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/31 04:18:45 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/09/25 16:10:05 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:54:47 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,8 +68,8 @@ double	get_tex_step_bonus(int texture, int ligne_h)
 
 	image_hight = 0;
 	step = 0;
-    if(texture == TEX_DOOR)
-        image_hight = (*get_textures_bonus(TEX_DOOR))->img_height;
+	if (texture == TEX_DOOR)
+		image_hight = (*get_textures_bonus(TEX_DOOR))->img_height;
 	else if (texture == TEX_EAST)
 		image_hight = (*get_textures_bonus(TEX_EAST))->img_height;
 	else if (texture == TEX_WEST)
@@ -85,7 +85,6 @@ double	get_tex_step_bonus(int texture, int ligne_h)
 double	get_tex_start_bonus(int start_y, int end_y, int texture)
 {
 	if (start_y < 0)
-		return (abs(start_y) * get_tex_step_bonus(texture, end_y
-				- start_y));
+		return (abs(start_y) * get_tex_step_bonus(texture, end_y - start_y));
 	return (0);
 }

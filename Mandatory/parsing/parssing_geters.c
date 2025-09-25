@@ -6,41 +6,42 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/10 06:07:03 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/08/16 17:33:46 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/25 20:55:09 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-t_map **get_map()
+t_map	**get_map(void)
 {
-    static t_map *map;
+	static t_map	*map;
 
-    if (!map)
-        get_map_info()->map = &map;
-    return (&map);
+	if (!map)
+		get_map_info()->map = &map;
+	return (&map);
 }
 
-int *get_all_filled()
+int	*get_all_filled(void)
 {
-    static int is_filled[7];
-    return(is_filled);
+	static int	is_filled[7];
+
+	return (is_filled);
 }
 
-char **get_final_map(int set, char **map)
+char	**get_final_map(int set, char **map)
 {
-	static char **final_map;
+	static char	**final_map;
 
 	if (set)
 		final_map = map;
 	return (final_map);
 }
 
-int get_map_hight(int set)
+int	get_map_hight(int set)
 {
-	int static hight;
-	int i;
-	t_map *map;
+	int static	hight;
+	int			i;
+	t_map		*map;
 
 	i = 0;
 	if (set)
@@ -57,11 +58,11 @@ int get_map_hight(int set)
 	return (hight);
 }
 
-void get_map_width()
+void	get_map_width(void)
 {
-	char		**map;
-	int			i;
-	int			map_len;
+	char	**map;
+	int		i;
+	int		map_len;
 
 	i = 0;
 	map_len = 0;

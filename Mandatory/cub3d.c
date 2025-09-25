@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:23:56 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/25 16:53:20 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:04:18 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,7 @@ int	main(int argc, char *argv[])
 		fill_data();
 		init_player();
 		mlx_mouse_move(v_global()->mlx, v_global()->mlx_win, WINDOW_WIDTH / 2,
-				WINDOW_HEIGHT / 2);
+			WINDOW_HEIGHT / 2);
 		mlx_mouse_hide(v_global()->mlx, v_global()->mlx_win);
 		mlx_hook(v_global()->mlx_win, 17, 0, destroy_window, NULL);
 		mlx_hook(v_global()->mlx_win, 2, 1L << 0, key_press, NULL);

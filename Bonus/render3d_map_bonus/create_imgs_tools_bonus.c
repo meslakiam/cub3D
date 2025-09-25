@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   create_imgs_tools_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/18 17:29:44 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/09/24 00:19:47 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:41:55 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,18 +69,18 @@ t_img	*get_door_pathlst(void)
 t_data_list	*get_door_imgs(int flag)
 {
 	static t_data_list	*door_lst;
-	t_img			*door_path_lst;
+	t_img				*door_path_lst;
 
 	if (!door_lst)
 	{
 		door_path_lst = get_door_pathlst();
 		while (door_path_lst)
 		{
-			ft_lstadd_back_imgs(&door_lst,create_image(door_path_lst, 0, 0));
+			ft_lstadd_back_imgs(&door_lst, create_image(door_path_lst, 0, 0));
 			door_path_lst = door_path_lst->next;
 		}
 	}
 	else if (flag == 1)
 		door_lst = door_lst->next;
-	return(door_lst);
+	return (door_lst);
 }

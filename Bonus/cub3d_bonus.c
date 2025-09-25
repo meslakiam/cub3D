@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d_bonus.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:23:56 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/25 16:53:47 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/09/25 22:24:10 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	cast_rays_and_render_game_bonus(void)
 {
 	t_ray_info	ray;
 	t_global	*data;
-	t_data_list *anim_img;
+	t_data_list	*anim_img;
 	int			i;
 
 	i = 0;
@@ -32,7 +32,8 @@ void	cast_rays_and_render_game_bonus(void)
 		ray.ray_angle += (double)FOV / (double)ray.num_of_rays;
 		i++;
 	}
-	draw_circle(WINDOW_HEIGHT / 2 - REDOT, WINDOW_WIDTH / 2 - REDOT, REDOT, 0x00FF00);
+	draw_circle(WINDOW_HEIGHT / 2 - REDOT, WINDOW_WIDTH / 2 - REDOT, REDOT,
+		0x00FF00);
 	anim_img = get_curr_player_animation();
 	if (anim_img)
 		draw_animation(anim_img);
@@ -41,7 +42,6 @@ void	cast_rays_and_render_game_bonus(void)
 
 int	create_game_bounus(void)
 {
-	// frames();
 	mouse_move();
 	render_floor_and_sky();
 	move_the_player_bonus();
@@ -61,7 +61,7 @@ int	main(int argc, char *argv[])
 		init_player();
 		v_mouse()->use_mouse = 1;
 		mlx_mouse_move(v_global()->mlx, v_global()->mlx_win, WINDOW_WIDTH / 2,
-				WINDOW_HEIGHT / 2);
+			WINDOW_HEIGHT / 2);
 		mlx_mouse_hide(v_global()->mlx, v_global()->mlx_win);
 		mlx_hook(v_global()->mlx_win, 17, 0, destroy_window, NULL);
 		mlx_hook(v_global()->mlx_win, 2, 1L << 0, key_press_bonus, NULL);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ray_info.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/08/09 14:59:51 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/25 01:26:12 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/09/25 20:53:33 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ double	distance(double x1, double y1, double x2, double y2)
 	return (sqrt(dx * dx + dy * dy));
 }
 
-	double	distance_from_player(double x2, double y2)
+double	distance_from_player(double x2, double y2)
 {
 	double	dx;
 	double	dy;

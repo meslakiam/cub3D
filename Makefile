@@ -43,7 +43,8 @@ PLAYER = Mandatory/player/init_player.c Mandatory/player/is_wall.c \
 	Mandatory/player/key_handling.c Mandatory/player/player_movement.c \
 	Mandatory/player/rotations_functions.c
 
-PLAYER_BONUS = $(PLAYER) Bonus/player_bonus/player_movement_bonus.c Bonus/player_bonus/key_handling_bonus.c
+PLAYER_BONUS = $(PLAYER) Bonus/player_bonus/player_movement_bonus.c Bonus/player_bonus/key_handling_bonus.c \
+	Bonus/player_bonus/door_checkers_bonus.c
 
 RAY_CASTING = Mandatory/ray_casting/cast_ray.c Mandatory/ray_casting/ray_info.c \
 	Mandatory/ray_casting/vertical_intersection.c Mandatory/ray_casting/horizontal_intersection.c
@@ -52,8 +53,8 @@ RENDER3D_MAP = Mandatory/render3d_map/render.c Mandatory/render3d_map/render_too
 	Mandatory/render3d_map/texture.c
 
 RENDER3D_MAP_BONUS = $(RENDER3D_MAP) Bonus/render3d_map_bonus/create_imgs_tools_bonus.c Bonus/render3d_map_bonus/render_bonus.c \
-	Bonus/render3d_map_bonus/texture_bonus.c Bonus/render3d_map_bonus/animation_bonus/create_animation_imgs.c \
-	Bonus/render3d_map_bonus/animation_bonus/draw_animation.c Bonus/render3d_map_bonus/animation_bonus/get_player_animation.c
+	Bonus/render3d_map_bonus/texture_bonus.c Bonus/render3d_map_bonus/animation_bonus/create_animation_imgs_bonus.c \
+	Bonus/render3d_map_bonus/animation_bonus/draw_animation_bonus.c Bonus/render3d_map_bonus/animation_bonus/get_player_animation_bonus.c
 
 
 

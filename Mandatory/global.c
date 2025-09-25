@@ -6,35 +6,36 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/01 15:49:00 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/10 18:36:51 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:07:08 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-t_map_data *get_map_info(void)
+t_map_data	*get_map_info(void)
 {
-    static t_map_data data;
-    return (&data);
+	static t_map_data	data;
+
+	return (&data);
 }
 
-t_player   *v_player(void)
+t_player	*v_player(void)
 {
-    static t_player   player;
+	static t_player	player;
 
-    return &player;
+	return (&player);
 }
 
-t_global   *v_global(void)
+t_global	*v_global(void)
 {
-    static t_global   data;
+	static t_global	data;
 
-    return &data;
+	return (&data);
 }
 
-t_mouse   *v_mouse(void)
+t_mouse	*v_mouse(void)
 {
-    static t_mouse    mouse;
+	static t_mouse	mouse;
 
-    return &mouse;
+	return (&mouse);
 }

@@ -3,74 +3,14 @@
 /*                                                        :::      ::::::::   */
 /*   key_handling_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:56:01 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/25 01:31:08 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:40:41 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../cube3d_bonus.h"
-
-int	is_closed_door(void)
-{
-	int	x;
-	int	y;
-
-	x = v_player()->p_x / TILESIZE;
-	y = v_player()->p_y / TILESIZE;
-	if(get_final_map(0, 0)[y + 1][x] == 'D')
-	{
-		get_final_map(0, 0)[y + 1][x] = 'O';
-		return 1;
-	}
-	if(get_final_map(0, 0)[y][x + 1] == 'D')
-	{
-		get_final_map(0, 0)[y][x + 1] = 'O';
-		return 1;
-	}
-	if(get_final_map(0, 0)[y - 1][x] == 'D')
-	{
-		get_final_map(0, 0)[y - 1][x] = 'O';
-		return 1;
-	}
-	if(get_final_map(0, 0)[y][x - 1] == 'D')
-	{
-		get_final_map(0, 0)[y][x - 1] = 'O';
-		return 1;
-	}
-	return 0;	
-}
-
-int	is_open_door(void)
-{
-	int	x;
-	int	y;
-
-	x = v_player()->p_x / TILESIZE;
-	y = v_player()->p_y / TILESIZE;
-	if(get_final_map(0, 0)[y + 1][x] == 'O')
-	{	
-		get_final_map(0, 0)[y + 1][x] = 'D';
-		return 1;
-	}
-	if(get_final_map(0, 0)[y][x + 1] == 'O')
-	{
-		get_final_map(0, 0)[y][x + 1] = 'D';
-		return 1;
-	}
-	if(get_final_map(0, 0)[y - 1][x] == 'O')
-	{	
-		get_final_map(0, 0)[y - 1][x] = 'D';
-		return 1;
-	}
-	if(get_final_map(0, 0)[y][x - 1] == 'O')
-	{
-		get_final_map(0, 0)[y][x - 1] = 'D';
-		return 1;
-	}
-	return 0;
-}
 
 void	door_and_mouse_key_press(int keycode)
 {
@@ -79,34 +19,33 @@ void	door_and_mouse_key_press(int keycode)
 
 	x = v_player()->p_x / TILESIZE;
 	y = v_player()->p_y / TILESIZE;
-	if(keycode == KEY_DOOR)
+	if (keycode == KEY_DOOR)
 	{
-		if(is_closed_door())
+		if (is_closed_door())
 			;
 		else if (is_open_door())
 			;
 	}
-	if(keycode == KEY_MOUSE_ON_OFF && v_mouse()->use_mouse)
+	if (keycode == KEY_MOUSE_ON_OFF && v_mouse()->use_mouse)
 		v_mouse()->use_mouse = 0;
-	else if(keycode == KEY_MOUSE_ON_OFF && !v_mouse()->use_mouse)
+	else if (keycode == KEY_MOUSE_ON_OFF && !v_mouse()->use_mouse)
 	{
 		mlx_mouse_move(v_global()->mlx, v_global()->mlx_win, WINDOW_WIDTH / 2,
-				WINDOW_HEIGHT / 2);
+			WINDOW_HEIGHT / 2);
 		v_mouse()->use_mouse = 1;
 	}
 }
 
-
-int mouse_hook(int button, int x, int y, void *param)
+int	mouse_hook(int button, int x, int y, void *param)
 {
 	(void)x;
 	(void)y;
 	(void)param;
-    if (button == MOUSE_LEFT_KEY)
-    {
+	if (button == MOUSE_LEFT_KEY)
+	{
 		v_player()->fire = 1;
-    }
-    return (0);
+	}
+	return (0);
 }
 
 int	key_press_bonus(int keycode)

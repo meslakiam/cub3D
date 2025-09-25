@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   key_handling.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:56:01 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/25 01:26:05 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:05:35 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "player.h"
 
-int	destroy_window(void	*param)
+int	destroy_window(void *param)
 {
 	(void)param;
 	mlx_destroy_image(v_global()->mlx, v_global()->win_img->img);
@@ -22,7 +22,7 @@ int	destroy_window(void	*param)
 		mlx_destroy_display(v_global()->mlx);
 	free(v_global()->mlx);
 	exit(0);
-	return 0;
+	return (0);
 }
 
 int	key_press(int keycode)

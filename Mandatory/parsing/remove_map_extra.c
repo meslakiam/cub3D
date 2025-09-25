@@ -3,27 +3,27 @@
 /*                                                        :::      ::::::::   */
 /*   remove_map_extra.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: oel-bann <oel-bann@student.42.fr>          +#+  +:+       +#+        */
+/*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/06 03:20:01 by oel-bann          #+#    #+#             */
-/*   Updated: 2025/09/25 16:50:04 by oel-bann         ###   ########.fr       */
+/*   Updated: 2025/09/25 21:00:47 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parsing.h"
 
-int line_start()
+int	line_start(void)
 {
-	static int line_start;
-	int first;
-	int j;
-	t_map *map;
+	static int	line_start;
+	int			first;
+	int			j;
+	t_map		*map;
 
 	first = 0;
 	if (!line_start)
 	{
 		map = *get_map();
-		while(map)
+		while (map)
 		{
 			j = 0;
 			while (strchr(" \t", map->map_line[j]))
@@ -39,19 +39,18 @@ int line_start()
 	return (line_start);
 }
 
-
-int line_end(char *str)
+int	line_end(char *str)
 {
-	int j;
-	int end;
+	int	j;
+	int	end;
 
 	j = 0;
 	end = 0;
 	if (is_newline(str))
-		return(ft_strlen(str));
+		return (ft_strlen(str));
 	while (strchr(" \t", str[j]))
 		j++;
-	while(str[j])
+	while (str[j])
 	{
 		if (!strchr(" \t\n", str[j]))
 			end = j;
@@ -60,17 +59,17 @@ int line_end(char *str)
 	return (end);
 }
 
-char *get_line(char *str)
+char	*get_line(char *str)
 {
-	char *new_line;
-	int start;
-	int end;
-	int i;
+	char	*new_line;
+	int		start;
+	int		end;
+	int		i;
 
 	i = 0;
 	end = line_end(str);
 	start = line_start();
-	new_line = ft_calloc((end -  start) + 2, sizeof(char));
+	new_line = ft_calloc((end - start) + 2, sizeof(char));
 	while (str && str[start] && start <= end)
 	{
 		new_line[i] = str[start];
@@ -80,12 +79,12 @@ char *get_line(char *str)
 	return (new_line);
 }
 
-char **copy_map_in_tab()
+char	**copy_map_in_tab(void)
 {
-	t_map *map;
-	char **new_map;
-	int i;
-	
+	t_map	*map;
+	char	**new_map;
+	int		i;
+
 	map = *get_map();
 	i = 0;
 	new_map = ft_calloc(get_map_hight(1) + 1, sizeof(char *));
@@ -93,7 +92,7 @@ char **copy_map_in_tab()
 	{
 		if (is_newline(map->map_line))
 		{
-			write (2, "Error \n ---> Newline Detected In The Map\n", 41);
+			write(2, "Error \n ---> Newline Detected In The Map\n", 41);
 			ft_exit(255);
 		}
 		new_map[i] = get_line(map->map_line);
@@ -103,10 +102,10 @@ char **copy_map_in_tab()
 	return (new_map);
 }
 
-void remove_extra_from_map()
+void	remove_extra_from_map(void)
 {
-	t_map *map;
-	t_map *prev;
+	t_map	*map;
+	t_map	*prev;
 
 	map = *get_map();
 	while (map->next)
