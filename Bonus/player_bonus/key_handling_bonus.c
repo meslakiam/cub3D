@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:56:01 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/25 21:40:41 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/25 22:50:58 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ int	mouse_hook(int button, int x, int y, void *param)
 int	key_press_bonus(int keycode)
 {
 	if (keycode == KEY_ESC)
-		ft_exit(0);
+		ft_exit(1);
 	if (keycode == KEY_ROTATE_RIGHT)
 		v_player()->turn_direction = 1;
 	if (keycode == KEY_ROTATE_LEFT)

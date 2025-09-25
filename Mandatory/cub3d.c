@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:23:56 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/25 21:04:18 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/25 22:41:03 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,9 +49,6 @@ int	main(int argc, char *argv[])
 		check_map(argv[1]);
 		fill_data();
 		init_player();
-		mlx_mouse_move(v_global()->mlx, v_global()->mlx_win, WINDOW_WIDTH / 2,
-			WINDOW_HEIGHT / 2);
-		mlx_mouse_hide(v_global()->mlx, v_global()->mlx_win);
 		mlx_hook(v_global()->mlx_win, 17, 0, destroy_window, NULL);
 		mlx_hook(v_global()->mlx_win, 2, 1L << 0, key_press, NULL);
 		mlx_hook(v_global()->mlx_win, 3, 1L << 1, key_release, NULL);

@@ -6,7 +6,7 @@
 /*   By: imeslaki <imeslaki@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/07/16 13:56:01 by imeslaki          #+#    #+#             */
-/*   Updated: 2025/09/25 21:05:35 by imeslaki         ###   ########.fr       */
+/*   Updated: 2025/09/25 22:53:12 by imeslaki         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,13 +15,7 @@
 int	destroy_window(void *param)
 {
 	(void)param;
-	mlx_destroy_image(v_global()->mlx, v_global()->win_img->img);
-	free(v_global()->win_img);
-	mlx_destroy_window(v_global()->mlx, v_global()->mlx_win);
-	if (v_global()->mlx)
-		mlx_destroy_display(v_global()->mlx);
-	free(v_global()->mlx);
-	exit(0);
+	ft_exit(1);
 	return (0);
 }
 
